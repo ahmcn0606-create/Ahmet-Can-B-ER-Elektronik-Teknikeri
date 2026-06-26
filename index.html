@@ -10,10 +10,32 @@
     
     <link rel="stylesheet" href="css-style.css">
     
-    <!-- 3D Etkileşim İçin Gerekli Spline Kütüphanesi -->
-    <script type="module" src="https://unpkg.com"></script>
+    <style>
+        /* 3D Sahnenin Tüm Ekranı Kaplaması İçin Kritik Ayarlar */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Arka planda kalması için */
+            pointer-events: auto; /* Fare hareketlerini algılaması için */
+        }
+        
+        /* İçeriklerin 3D Sahnenin Üzerinde Cam Gibi Durması İçin */
+        .content-layer {
+            position: relative;
+            z-index: 2; /* 3D sahnenin üstüne çıkarmak için */
+            pointer-events: none; /* Menü ve butonlar hariç fare akışı arkaya geçsin */
+        }
+        
+        /* Tıklanabilir alanları serbest bırakıyoruz */
+        .navbar, .btn, .nav-links a, img {
+            pointer-events: auto;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #050505; margin: 0; overflow-x: hidden;">
 
     <!-- BÜYÜTÜLMÜŞ SADE VE TEKNOLOJİK AÇILIŞ INTROSU -->
     <div class="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0b0b; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease;">
@@ -32,68 +54,141 @@
         }
     </style>
 
-    <!-- ÜST MENÜ (SOLDA SABİT MONOGRAM, SAĞDA TR BAYRAK ENTEGRELİ) -->
-    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box;">
-        <!-- SOL ÜST: ÇİZGİSİ DÜZELTİLMİŞ MONOGRAM ALANI -->
-        <div class="navbar-brand" style="display: flex; align-items: center; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.1); height: 40px;">
-            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
-        </div>
-        
-        <!-- SAĞ ÜST: LİNKLER VE TÜRK BAYRAĞI -->
-        <ul class="nav-links" style="display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
-            <li><a href="index.html" class="active" style="color: #ffffff; text-decoration: none;">Ana Sayfa</a></li>
-            <li><a href="hakkimda.html" style="color: #a0a0a0; text-decoration: none;">Hakkımda</a></li>
-            <li><a href="projelerim.html" style="color: #a0a0a0; text-decoration: none;">Projelerim</a></li>
-            <li><a href="iletisim.html" style="color: #a0a0a0; text-decoration: none;">İletişim</a></li>
-            
-            <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); cursor: default;">
-                <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
-                <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-            </li>
-        </ul>
-    </nav>
+    <!-- KOMPLE ARKA PLANI KAPLAYAN SİHİRLİ 3D CANVAS ALANI -->
+    <div id="canvas-container"></div>
 
-    <!-- ANA ALAN VE SİHİRLİ 3D SAVUNMA SANAYİİ SAHNESİ -->
-    <main class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 120px 20px 60px 20px; box-sizing: border-box; background: #0b0b0b;">
-        
-        <div style="margin-bottom: 20px;">
-            <img src="anasayfa_fotograf.jpeg" alt="Ahmet Can Biçer" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #ffffff; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-        </div>
+    <!-- ÜST KATMAN (TÜM HTML ÖĞELERİ BURADA) -->
+    <div class="content-layer">
 
-        <h1 style="font-size: 38px; font-weight: 800; color: #ffffff; margin-bottom: 5px; letter-spacing: 0.5px;">Ahmet Can BİÇER</h1>
-        <h2 style="font-size: 16px; color: #a0a0a0; font-weight: 500; letter-spacing: 2px; margin-bottom: 40px; text-transform: uppercase;">Elektronik Teknikeri</h2>
-
-        <!-- TAM ORTALI, INTERAKTIF 3D SAVUNMA SANAYII MODEL VİTRİNİ -->
-        <div class="3d-scene-container" style="width: 100%; max-width: 800px; height: 450px; margin: 0 auto 40px auto; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative;">
-            <!-- Bilimkurgu / Savunma Sanayii İstasyon Temalı İnteraktif Sihirli 3D Model -->
-            <spline-viewer url="https://spline.design" style="width: 100%; height: 100%;"></spline-viewer>
-            
-            <!-- Kullanıcı Yardım İpucu -->
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); padding: 6px 14px; border-radius: 20px; font-size: 11px; color: #888; letter-spacing: 1px; pointer-events: none;">
-                💡 Fare tekerleğiyle yaklaşın ve sürükleyerek 3D keşfedin
+        <!-- ÜST MENÜ (ÇİZGİ VE BAYRAK TAM YERİNDE) -->
+        <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <!-- SOL ÜST: SABİTLENMİŞ VE ÇİZGİLİ MONOGRAM -->
+            <div class="navbar-brand" style="display: flex; align-items: center; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.1); height: 40px;">
+                <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
             </div>
-        </div>
+            
+            <!-- SAĞ ÜST: LİNKLER VE TÜRK BAYRAĞI -->
+            <ul class="nav-links" style="display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
+                <li><a href="index.html" class="active" style="color: #ffffff; text-decoration: none; font-weight: 600;">Ana Sayfa</a></li>
+                <li><a href="hakkimda.html" style="color: #a0a0a0; text-decoration: none;">Hakkımda</a></li>
+                <li><a href="projelerim.html" style="color: #a0a0a0; text-decoration: none;">Projelerim</a></li>
+                <li><a href="iletisim.html" style="color: #a0a0a0; text-decoration: none;">İletişim</a></li>
+                
+                <!-- EN SAĞ: TR YAZISI VE KESKİN BAYRAK -->
+                <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); cursor: default;">
+                    <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
+                    <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+                </li>
+            </ul>
+        </nav>
 
-        <a href="projelerim.html" class="btn" style="padding: 14px 36px; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; font-weight: 600;">Keşfetmeye Başla</a>
-    </main>
+        <!-- ANA ALAN VE KİMLİK KÜNYESİ -->
+        <main class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 120px 20px 60px 20px; box-sizing: border-box;">
+            
+            <div style="margin-bottom: 25px;">
+                <img src="anasayfa_fotograf.jpeg" alt="Ahmet Can Biçer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+            </div>
 
-    <!-- FOOTER -->
-    <footer style="padding: 30px; text-align: center; color: #444; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.02); background: #070707;">
-        &copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.
-    </footer>
+            <h1 style="font-size: 42px; font-weight: 800; color: #ffffff; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">Ahmet Can BİÇER</h1>
+            <h2 style="font-size: 16px; color: #00e5ff; font-weight: 600; letter-spacing: 3px; margin-bottom: 45px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,229,255,0.2);">Elektronik Teknikeri</h2>
 
-    <!-- ZAMANLAYICI SCRIPT -->
+            <a href="projelerim.html" class="btn" style="padding: 14px 40px; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 600; background: #ffffff; color: #000000; border-radius: 4px; text-decoration: none; box-shadow: 0 10px 25px rgba(255,255,255,0.1); transition: all 0.3s ease;">Keşfetmeye Başla</a>
+        </main>
+
+        <!-- FOOTER -->
+        <footer style="padding: 30px; text-align: center; color: #555; font-size: 12px; background: transparent;">
+            &copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.
+        </footer>
+
+    </div>
+
+    <!-- 3D MOTOR KÜTÜPHANESİ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- ETKİLEŞİMLİ SİBER UZAY MOTORU -->
     <script>
-        window.addEventListener('load', () => {
-            const preloader = document.querySelector('.preloader');
-            setTimeout(() => {
-                if (preloader) {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 600);
-                }
-            }, 3000); 
-        });
-    </script>
+        // 1. Sahne ve Kamera Ayarları
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 6;
 
-</body>
-</html>
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        // 2. Savunma Sanayii / Siber Teknoloji Parçacıkları (2500 Adet Siber Nokta)
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+
+        for (let i = 0; i < 2500; i++) {
+            const x = THREE.MathUtils.randFloatSpread(12);
+            const y = THREE.MathUtils.randFloatSpread(12);
+            const z = THREE.MathUtils.randFloatSpread(12);
+            vertices.push(x, y, z);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+        // Noktaların Materyali (Teknolojik Siber Mavi ve Beyaz Parıltı)
+        const material = new THREE.PointsMaterial({ 
+            color: 0x00e5ff, // Siber Turkuaz/Mavi Radar Rengi
+            size: 0.035,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particleSystem = new THREE.Points(geometry, material);
+        scene.add(particleSystem);
+
+        // 3. Fare Hareketlerini ve Fare Tekerleğini (Scroll) Yakalama
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+        let scrollY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Sihirli Kaydırma Etkisi: Fare tekerleği döndükçe parçacıklar derinleşir/aşağı akar
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        // 4. Pürüzsüz Animasyon Döngüsü (Render Loop)
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Yumuşak geçiş (Easing) ile fare takibi
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            // Evrenin sürekli yavaşça kendi etrafında dönmesi
+            particleSystem.rotation.x += 0.001;
+            particleSystem.rotation.y += 0.0015;
+
+            // Fare hareketine göre siber ağın pürüzsüzce esnemesi
+            particleSystem.rotation.x += targetY * 0.02;
+            particleSystem.rotation.y += targetX * 0.02;
+
+            // Fare tekerleği döndükçe (Scroll yapıldığında) sistemin derinlemesine aşağı akması (Sihirli etki)
+            particleSystem.position.y = (scrollY * 0.002);
+            particleSystem.position.z = (scrollY * 0.001);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Pencere boyutu değiştiğinde 3D uzayın bozulmaması için otomatik esnetme
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Giriş İntro Yönetimi
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('.preloader');setTimeout(() => {if (preloader) {preloader.style.opacity = '0';setTimeout(() => preloader.style.display = 'none', 600);}}, 3000);});
