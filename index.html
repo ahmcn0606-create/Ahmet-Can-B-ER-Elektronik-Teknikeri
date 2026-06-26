@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- TARAYICI SEKMESİNE İKON VE BAŞLIK -->
-    <link rel="icon" type="image/png" href="ACB MONOGRAM_SiYAH.png">
+        <link rel="icon" type="image/png" href="ACB MONOGRAM_SİYAH.png">
+
     <title>Ahmet Can BİÇER │ Elektronik Teknikeri</title>
     
     <link rel="stylesheet" href="css-style.css">
@@ -35,7 +36,7 @@
         }
     </style>
 </head>
-<body style="background-color: #050505; margin: 0; overflow-x: hidden;">
+<body>
 
     <!-- BÜYÜTÜLMÜŞ SADE VE TEKNOLOJİK AÇILIŞ INTROSU -->
     <div class="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0b0b; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease;">
@@ -52,6 +53,9 @@
             50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(255,255,255,0.5)); }
             100% { transform: scale(0.95); opacity: 0.6; filter: drop-shadow(0 0 5px rgba(255,255,255,0.1)); }
         }
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: auto; }
+        .content-layer { position: relative; z-index: 2; pointer-events: none; }
+        .navbar, .btn, .nav-links a, img { pointer-events: auto; }
     </style>
 
     <!-- KOMPLE ARKA PLANI KAPLAYAN SİHİRLİ 3D CANVAS ALANI -->
@@ -59,6 +63,82 @@
 
     <!-- ÜST KATMAN (TÜM HTML ÖĞELERİ BURADA) -->
     <div class="content-layer">
+
+        <!-- ÜST MENÜ (ÇİZGİ VE BAYRAK TAM YERİNDE) -->
+        <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.03);">
+            <div class="navbar-brand" style="display: flex; align-items: center; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.1); height: 40px;">
+                <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
+            </div>
+            
+            <ul class="nav-links" style="display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
+                <li><a href="index.html" class="active" style="color: #ffffff; text-decoration: none; font-weight: 600;">Ana Sayfa</a></li>
+                <li><a href="hakkimda.html" style="color: #a0a0a0; text-decoration: none;">Hakkımda</a></li>
+                <li><a href="projelerim.html" style="color: #a0a0a0; text-decoration: none;">Projelerim</a></li>
+                <li><a href="iletisim.html" style="color: #a0a0a0; text-decoration: none;">İletişim</a></li>
+                
+                <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); cursor: default;">
+                    <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
+                    <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ANA ALAN VE KİMLİK KÜNYESİ -->
+        <main class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 120px 20px 60px 20px; box-sizing: border-box;">
+            <div style="margin-bottom: 25px;">
+                <img src="anasayfa_fotograf.jpeg" alt="Ahmet Can Biçer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+            </div>
+            <h1 style="font-size: 42px; font-weight: 800; color: #ffffff; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">Ahmet Can BİÇER</h1>
+            <h2 style="font-size: 16px; color: #00e5ff; font-weight: 600; letter-spacing: 3px; margin-bottom: 45px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,229,255,0.2);">Elektronik Teknikeri</h2>
+            <a href="projelerim.html" class="btn" style="padding: 14px 40px; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 600; background: #ffffff; color: #000000; border-radius: 4px; text-decoration: none; box-shadow: 0 10px 25px rgba(255,255,255,0.1); transition: all 0.3s ease;">Keşfetmeye Başla</a>
+        </main>
+
+        <!-- FOOTER -->
+        <footer style="padding: 30px; text-align: center; color: #555; font-size: 12px; background: transparent;">
+            &copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.
+        </footer>
+    </div>
+
+    <!-- 3D MOTOR KÜTÜPHANESİ VE ETKİLEŞİMLİ SİBER UZAY MOTORU -->
+    <script src="https://cloudflare.com"></script>
+    <script>
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 6;
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        for (let i = 0; i < 2500; i++) {
+            vertices.push(THREE.MathUtils.randFloatSpread(12), THREE.MathUtils.randFloatSpread(12), THREE.MathUtils.randFloatSpread(12));
+        }
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        const material = new THREE.PointsMaterial({ color: 0x00e5ff, size: 0.035, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
+        const particleSystem = new THREE.Points(geometry, material);
+        scene.add(particleSystem);
+
+        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0, scrollY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = (e.clientX / window.innerWidth) * 2 - 1; mouseY = -(e.clientY / window.innerHeight) * 2 + 1; });
+        window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            targetX += (mouseX - targetX) * 0.05; targetY += (mouseY - targetY) * 0.05;
+            particleSystem.rotation.x += 0.001; particleSystem.rotation.y += 0.0015;
+            particleSystem.rotation.x += targetY * 0.02; particleSystem.rotation.y += targetX * 0.02;
+            particleSystem.position.y = (scrollY * 0.002); particleSystem.position.z = (scrollY * 0.001);
+            renderer.render(scene, camera);
+        }
+        animate();
+        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+        window.addEventListener('load', () => { const preloader = document.querySelector('.preloader'); setTimeout(() => { if (preloader) { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 600); } }, 3000); });
+    </script>
+</body>
+</html>
+
 
         <!-- ÜST MENÜ (ÇİZGİ VE BAYRAK TAM YERİNDE) -->
         <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.03);">
