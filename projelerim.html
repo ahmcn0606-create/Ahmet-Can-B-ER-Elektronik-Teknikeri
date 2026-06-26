@@ -3,33 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projelerim | Portfolyo</title>
+    
+    <!-- TARAYICI SEKMESİNE İKON VE BAŞLIK -->
+    <link rel="icon" type="image/png" href="ACB MONOGRAM_SİYAH.png">
+    <title>Projelerim │ Ahmet Can BİÇER</title>
+    
     <link rel="stylesheet" href="css-style.css">
+
+    <style>
+        /* TELEFONLAR İÇİN MOBİL UYUM DÜZENLEMESİ */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px !important;
+                flex-direction: column !important; /* Menüyü dikey hizaya çeker, taşmayı önler */
+                gap: 12px !important;
+            }
+            .navbar-brand {
+                border-right: none !important; /* Dikey çizgiyi mobilde kaldırır */
+                height: auto !important;
+            }
+            .nav-links {
+                gap: 15px !important;
+                flex-wrap: wrap !important; /* Linkleri sığmazsa alt satıra pürüzsüzce indirir */
+                justify-content: center !important;
+            }
+            .nav-links a {
+                font-size: 13px !important;
+            }
+            /* Proje içeriklerinin üst menü altında kalmaması için padding payı */
+            .container, .project-container, .main-container {
+                padding-top: 150px !important; 
+            }
+            /* Başlık ve proje kartlarının mobilde küçülerek ekrana sığması */
+            h1 { font-size: 26px !important; }
+            h2 { font-size: 15px !important; }
+            
+            /* Proje Grid ve Kartlarının Mobilde Taşmasını Önleme */
+            .projects-grid, .grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+                width: 100% !important;
+            }
+            .project-card, .card {
+                padding: 15px !important;
+                width: 100% !important; /* Kartları ekran genişliğine eşitler */
+            }
+            .project-card img, .card img {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-       <!-- GERİ DÖNÜŞ BUTONLU PROJELERİM MENÜSÜ -->
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <div class="nav-logo-circle">
-                <div class="nav-logo-top">ACB</div>
-                <div class="nav-logo-bottom">DESIGN</div>
-            </div>
-            <a href="hakkimda.html" style="font-size: 14px; font-weight: 600; letter-spacing: 1px; color: var(--text-pure-white); margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
-                &larr; HAKKIMDA'YA DÖN
-            </a>
+    <!-- ÜST MENÜ (LOGON, ÇİZGİN VE TÜRK BAYRAĞIN SAPASAĞLAM YERİNDE) -->
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.03);">
+        <!-- SOL ÜST: ÇİZGİLİ SABİT LOGO ALANI -->
+        <div class="navbar-brand" style="display: flex; align-items: center; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.1); height: 40px;">
+            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
         </div>
         
-        <ul class="nav-links">
-<!-- YAN YANA TR YAZISI VE PNG TÜRK BAYRAĞI ENTEGRASYONU -->
-<li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); margin-left: 10px; cursor: default;">
-    <!-- TR Yazısı -->
-    <span style="font-size: 13px; font-weight: 700; letter-spacing: 1px; color: var(--text-pure-white);">TR</span>
-    <!-- Klasörünüzden Okunan Keskin PNG Bayrak -->
-    <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 26px; height: auto; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); border-radius: 2px;">
-</li>
-
-
+        <!-- SAĞ ÜST: LİNKLER VE TÜRK BAYRAĞI -->
+        <ul class="nav-links" style="display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
+            <li><a href="index.html" style="color: #a0a0a0; text-decoration: none;">Ana Sayfa</a></li>
+            <li><a href="hakkimda.html" style="color: #a0a0a0; text-decoration: none;">Hakkımda</a></li>
+            <li><a href="projelerim.html" class="active" style="color: #ffffff; text-decoration: none; font-weight: 600;">Projelerim</a></li>
+            <li><a href="iletisim.html" style="color: #a0a0a0; text-decoration: none;">İletişim</a></li>
+            
+            <!-- EN SAĞ: YAN YANA TR YAZISI VE TÜRK BAYRAĞI -->
+            <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); cursor: default;">
+                <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
+                <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            </li>
         </ul>
     </nav>
 
