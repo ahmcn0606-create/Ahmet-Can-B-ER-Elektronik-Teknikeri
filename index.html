@@ -8,24 +8,53 @@
     <link rel="stylesheet" href="css-style.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #0b0b0b; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow: hidden; }
+        body, html { width: 100%; height: 100%; background-color: #0b0b0b; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
         
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(15, 15, 15, 0.6); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
         .navbar-brand { display: flex; align-items: center; padding-right: 15px; border-right: 1px solid rgba(255, 255, 255, 0.1); height: 35px; }
         .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
         .nav-links a { color: #a0a0a0; text-decoration: none; font-size: 14px; font-weight: 500; }
         
-        /* SARMAL ANİMASYONUNUZUN TAM ORTADA DURACAĞI ALAN */
-        .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; padding: 80px 20px; margin: 0 auto; position: relative; }
+        /* SARMAL ANİMASYONUN TÜM EKRANI KAPLAYACAĞI SABİT ALAN */
+        #sarmal-frame { 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            z-index: 1; /* En arkada */
+            pointer-events: auto; /* Fare hareketlerini algılaması için şart */
+        }
         
-        /* Animasyon.html'i ekrana kusursuz ve kaymasız sığdıran akıllı çerçeve */
-        #sarmal-frame { width: 100%; max-width: 700px; height: 500px; border: none; background: transparent; overflow: hidden; z-index: 5; }
+        /* İsminin 3D sarmalın üzerinde cam gibi parlaması için üst katman */
+        .content-layer {
+            position: relative;
+            z-index: 2; /* Yazıyı öne çıkarır */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            pointer-events: none; /* Fare akışının arkadaki 3D sahneye geçmesini sağlar */
+        }
+        
+        .main-title { 
+            font-size: 48px; 
+            font-weight: 800; 
+            color: #ffffff; 
+            letter-spacing: 3px; 
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
 
         @media (max-width: 768px) {
             .navbar { padding: 12px 20px; flex-direction: column; gap: 12px; }
             .navbar-brand { border-right: none; height: auto; }
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            #sarmal-frame { height: 350px; } /* Mobilde ekranı kaplaması için küçültme */
+            .content-layer { padding-top: 140px; }
+            .main-title { font-size: 32px; }
         }
     </style>
 </head>
@@ -44,37 +73,39 @@
         @keyframes pulseGlow { 0% { transform: scale(0.95); opacity: 0.6; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.6; } }
     </style>
 
-    <!-- ÜST MENÜ -->
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 35px; height: auto; display: block;">
-        </div>
-        <ul class="nav-links">
-            <li><a href="hakkimda.html">Hakkımda</a></li>
-            <li><a href="iletisim.html">İletişim</a></li>
-            <li style="display: flex; align-items: center; gap: 6px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.1);">
-                <span style="font-size: 12px; font-weight: 700; color: #ffffff;">TR</span>
-                <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 22px; height: auto; display: block; border-radius: 2px;">
-            </li>
-        </ul>
-    </nav>
+    <!-- TÜM ARKA PLANI KAPLAYAN BAĞIMSIZ 3D IFRAME PENCERESİ -->
+    <iframe id="sarmal-frame" src="animasyon.html" scrolling="no"></iframe>
 
-    <!-- SARMAL ANİMASYONUN SIĞACAĞI KATMAN -->
-    <main class="main-container">
-        <iframe id="sarmal-frame" src="animasyon.html" scrolling="no"></iframe>
-    </main>
+    <!-- ÜST KATMAN (MENÜ VE İSMİN BURADA DURACAK) -->
+    <div class="content-layer">
+        <nav class="navbar" style="pointer-events: auto;">
+            <div class="navbar-brand">
+                <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 35px; height: auto; display: block;">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="hakkimda.html">Hakkımda</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+                <li style="display: flex; align-items: center; gap: 6px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.1);">
+                    <span style="font-size: 12px; font-weight: 700; color: #ffffff;">TR</span>
+                    <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 22px; height: auto; display: block; border-radius: 2px;">
+                </li>
+            </ul>
+        </nav>
 
-    <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); width: 100%; border-top: 1px solid rgba(255,255,255,0.02);">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
+        <main>
+            <h1 class="main-title">Ahmet Can BİÇER</h1>
+        </main>
+    </div>
 
-    <!-- SAYFA DEĞİŞİRKEN GELMEYEN, SADECE YENİLEMEDE (F5) TETİKLENEN HAFIZA MOTORU -->
+    <footer style="position: fixed; bottom: 0; left: 0; padding: 25px; text-align: center; color: #444; font-size: 12px; width: 100%; border-top: 1px solid rgba(255,255,255,0.01); z-index: 10; background: transparent; pointer-events: none;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
+
+    <!-- F5 KONTROLLÜ HAFIZA MOTORU -->
     <script>
         const preloader = document.querySelector('.preloader');
-        
-        // Tarayıcının performans hafızasından sayfanın yenilenip yenilenmediğini (F5) kontrol et
         const isPageRefreshed = performance.getEntriesByType("navigation")[0]?.type === "reload";
 
         if (isPageRefreshed) {
-            // Eğer sayfa yenilendiyse introyu her zaman 3 saniye çalıştır
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     if (preloader) {
@@ -85,7 +116,6 @@
                 }, 3000); 
             });
         } else {
-            // Başka bir sayfadan geri gelindiğinde introyu gösterme, doğrudan içeriği aç
             if (preloader) { preloader.style.display = 'none'; }
         }
     </script>
