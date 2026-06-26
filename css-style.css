@@ -1,0 +1,575 @@
+/* ==========================================
+   1. ELİT SİYAH & BEYAZ KONTRAST DEĞİŞKENLERİ
+   ========================================== */
+:root {
+    --bg-mat-black: #0c0c0d;     /* Derin Mat Siyah */
+    --bg-darker: #131315;        /* Menü ve Alt Bar İçin Premium Siyah */
+    --text-pure-white: #ffffff;  /* Saf Beyaz Yazılar */
+    --text-muted-gray: #a1a1aa;  /* Slate Gri */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-mat-black);
+    color: var(--text-pure-white);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding-bottom: 100px; /* Sosyal bar için alt boşluk artırıldı */
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   FERSAH: 10 SANİYE YANIP SÖNEN LOGO INTROSU
+   ========================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOutUp 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    animation-delay: 10s; 
+    pointer-events: none;
+}
+
+.preloader-circle {
+    width: 220px;
+    height: 220px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: 
+        circleEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+        premiumPulse 2.5s ease-in-out infinite alternate;
+    animation-delay: 0.2s, 1.2s;
+}
+
+.logo-top {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.logo-bottom {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    line-height: 1;
+    text-indent: 8px;
+}
+
+@keyframes circleEntrance {
+    to { opacity: 1; transform: scale(1); border-color: rgba(255, 255, 255, 0.4); }
+}
+@keyframes premiumPulse {
+    0% { opacity: 0.5; transform: scale(0.98); border-color: rgba(255, 255, 255, 0.2); }
+    100% { opacity: 1; transform: scale(1.02); border-color: rgba(255, 255, 255, 0.6); }
+}
+@keyframes fadeOutUp {
+    to { transform: translateY(-100%); }
+}
+
+/* ==========================================
+   2. NAVİGASYON (MENÜ) VE ŞEKİLLİ ALT ÇİZGİ
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background-color: var(--bg-darker);
+    position: relative;
+    z-index: 90;
+}
+
+.navbar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* Menüdeki Yuvarlak Logo Alanı */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-logo-circle {
+    width: 65px;
+    height: 65px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-logo-top {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    line-height: 1;
+}
+
+.nav-logo-bottom {
+    font-size: 5px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1;
+    margin-top: 2px;
+    text-indent: 1px;
+}
+
+.brand-text {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--text-muted-gray);
+    text-transform: uppercase;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 15px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-muted-gray);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-pure-white);
+}
+
+.cv-btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 14px !important;
+}
+.cv-btn:hover {
+    background-color: var(--text-pure-white);
+    color: var(--bg-mat-black) !important;
+}
+
+/* ==========================================
+   3. ANA SAYFA SİNEMATİK TEKNOLOJİ VİTRİNİ
+   ========================================== */
+.container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.showcase-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 65vh;
+}
+
+/* Sürekli Dönen Animasyon / GIF Kutusu */
+.tech-video-container {
+    width: 100%;
+    max-width: 950px;
+    height: 480px;
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.tech-video-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Videonun/Gifin alanı tam kaplaması için */
+}
+
+.showcase-text {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--text-muted-gray);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   4. EN ALTAKİ SOSYAL MEDYA İKON BARI
+   ========================================== */
+.social-footer-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    padding: 25px;
+    background-color: var(--bg-darker);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 80;
+}
+
+.social-footer-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.social-icon-link:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.social-icon-link svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--text-pure-white); /* Logoların saf beyaz görünmesi için */
+}
+
+/* Mobil Uyum */
+@media (max-width: 768px) {
+    .tech-video-container { height: 280px; }
+    .brand-text { display: none; } /* Mobilde yan yazıyı gizler */
+}
+
+
+
+/* ==========================================
+   5. HAKKIMDA SAYFASI (ORİJİNAL KİLİTLİ DÜZEN)
+   ========================================== */
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 110px;
+    min-height: 50vh;
+    margin-bottom: 60px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--text-muted-gray);
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.hero-photo-wrapper {
+    flex: 0 0 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hakkımda profil resmini ilk günkü gibi sabitleyen kilit boyut */
+.hero-photo {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    border-radius: 20%;
+    object-fit: cover;
+    border: 4px solid var(--text-pure-white);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #333;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 60px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 22px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-pure-white);
+    border: 4px solid #000;
+    border-radius: 50px;
+    z-index: 2;
+}
+
+.timeline-dot.flag-icon {
+    background: none;
+    border: none;
+    left: 18px;
+    top: 15px;
+    font-size: 20px;
+}
+
+.timeline-content {
+    background: var(--bg-darker);
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 25px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 0px var(--text-pure-white);
+}
+
+.timeline-content .date {
+    display: block;
+    font-weight: bold;
+    color: var(--text-muted-gray);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.timeline-content h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-pure-white);
+    font-size: 1.2rem;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: var(--text-muted-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+    .timeline-line { left: 50%; transform: translateX(-50%); }
+    .timeline-item { width: 50%; padding-left: 0; }
+    .timeline-item:nth-child(even) { margin-left: auto; padding-left: 40px; }
+    .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
+    .timeline-item:nth-child(even) .timeline-dot.flag-icon { left: -14px; }
+    .timeline-item:nth-child(odd) { margin-right: auto; padding-right: 40px; text-align: right; }
+    .timeline-item:nth-child(odd) .timeline-dot { right: -10px; left: auto; }
+    .timeline-item:nth-child(odd) .timeline-dot.flag-icon { right: -14px; left: auto; }
+}
+
+
+/* ==========================================
+   6. PROJELERİM ALANI (İLK ORİJİNAL YAN YANA DÜZEN)
+   ========================================== */
+.projects-container, .projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* KESİNLİKLE yan yana 2 kart yapar */
+    gap: 30px !important;
+    max-width: 95% !important;
+    width: 95% !important;
+    margin: 50px auto !important;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.project-card {
+    display: flex !important;
+    flex-direction: row !important; /* Resim solda, yazı sağda */
+    background-color: var(--bg-darker);
+    border: 1px solid #2d2d30;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    min-height: 420px; 
+    height: auto !important;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--text-pure-white);
+}
+
+.project-image-wrapper {
+    flex: 0 0 45% !important; /* Resim kutusunun genişliğini kilitler */
+    width: 45% !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(22, 22, 23, 0.5);
+}
+
+/* Proje resimlerinin devasa büyümesini önleyen kesin kilit kod */
+.project-card img {
+    width: 100%;
+    height: 100%;
+    max-height: 250px; /* Resmin dikeyde taşmasını engeller */
+    object-fit: contain; /* Resmi bozmadan kutuya sığdırır */
+    display: block;
+    border-radius: 15px;
+}
+
+.project-info, .project-info-wrapper {
+    padding: 30px;
+    flex: 1;
+    width: 55% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.project-info h3, .project-info-wrapper h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.35rem;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.project-info p, .project-info-wrapper p {
+    margin: 0 0 15px 0;
+    font-size: 0.95rem;
+    color: var(--text-muted-gray);
+    line-height: 1.5;
+}
+
+.project-details-list {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding-left: 20px; 
+}
+
+.project-details-list li {
+    color: var(--text-muted-gray);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    list-style-type: disc;
+}
+
+.project-link {
+    color: var(--text-pure-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    margin-top: auto; 
+}
+
+h2 .highlight {
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .social-footer-bar {
+        position: relative !important; /* Mobilde sabitliği kaldırarak içeriklerin üstüne binmesini önler */
+        margin-top: 40px;
+    }
+    body {
+        padding-bottom: 0px !important;
+    }
+}
+
+/* Sayfa ilk açıldığında yukarı doğru pürüzsüz kayma efekti */
+main.container {
+    animation: pageFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes pageFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Sayfa 30px aşağıdan yukarı doğru süzülür */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Preloader ekranının yukarı kayarken arkasında pürüz bırakmaması için sabitleme */
+.preloader {
+    will-change: transform;
+}
+

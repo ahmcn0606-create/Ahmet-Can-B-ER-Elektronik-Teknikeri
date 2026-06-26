@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | ACB DESIGN</title>
+    <link rel="stylesheet" href="css-style.css">
+</head>
+<body>
+
+    <!-- 10 SANİYELİK SİNEMATİK INTRO -->
+    <div class="preloader">
+        <div class="preloader-circle">
+            <div class="logo-top">ACB</div>
+            <div class="logo-bottom">DESIGN</div>
+        </div>
+    </div>
+
+    <!-- ÜST MENÜ -->
+   <!-- GERİ DÖNÜŞ BUTONLU İLETİŞİM MENÜSÜ -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="nav-logo-circle">
+                <div class="nav-logo-top">ACB</div>
+                <div class="nav-logo-bottom">DESIGN</div>
+            </div>
+            <a href="index.html" style="font-size: 14px; font-weight: 600; letter-spacing: 1px; color: var(--text-pure-white); margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
+                &larr; GERİ DÖN
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+<!-- YAN YANA TR YAZISI VE PNG TÜRK BAYRAĞI ENTEGRASYONU -->
+<li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); margin-left: 10px; cursor: default;">
+    <!-- TR Yazısı -->
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 1px; color: var(--text-pure-white);">TR</span>
+    <!-- Klasörünüzden Okunan Keskin PNG Bayrak -->
+    <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 26px; height: auto; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); border-radius: 2px;">
+</li>
+
+
+        </ul>
+    </nav>
+
+    <!-- İLETİŞİM ALANI -->
+    <main class="container" style="max-width: 1000px; padding-bottom: 120px;">
+        <h2 style="text-align: center; margin-bottom: 10px;">Birlikte <span class="highlight">Çalışalım</span></h2>
+        <p style="text-align: center; color: var(--text-muted-gray); margin-bottom: 40px;">Projeleriniz, iş teklifleriniz veya teknik danışmanlık talepleriniz için bana ulaşabilirsiniz.</p>
+
+        <!-- Telefonlarda esneyen ve iç içe girmeyen iletişim kartları -->
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 30px; justify-content: space-between;">
+            
+            <!-- SOL TARAF: DOĞRUDAN MAİL PANELİ -->
+            <div style="flex: 1; min-width: 300px; background-color: var(--bg-darker); border: 1px solid #27272a; padding: 30px; border-radius: 6px;">
+                <h3 style="font-size: 18px; margin-bottom: 20px;">Hızlı Mesaj Gönder</h3>
+                <!-- Formspree ücretsiz servisi sayesinde buraya yazılan mesajlar direkt mailinize düşer -->
+               <!-- Otomatik doldurması kapatılmış, doğrudan size gelen mesaj formu -->
+<form action="https://formspree.io" method="POST" autocomplete="off" style="display: flex; flex-direction: column; gap: 15px;">
+    <!-- Tarayıcıyı yanıltmak için gizli sahte kutular (Kendi bilgilerinizi buraya basıp asıl kutuları boş bırakır) -->
+    <input type="text" name="_fake_username" style="display:none" autocomplete="off">
+    <input type="password" name="_fake_password" style="display:none" autocomplete="off">
+    
+    <!-- Ziyaretçinin kendi bilgilerini yazacağı asıl temiz kutular -->
+    <input type="text" name="name" placeholder="Adınız Soyadınız" required autocomplete="new-password" style="width: 100%; padding: 12px; background: #000; border: 1px solid #27272a; border-radius: 4px; color: #fff; font-family: inherit;">
+    <input type="email" name="email" placeholder="E-Posta Adresiniz" required autocomplete="new-password" style="width: 100%; padding: 12px; background: #000; border: 1px solid #27272a; border-radius: 4px; color: #fff; font-family: inherit;">
+    <textarea name="message" rows="5" placeholder="Mesajınız..." required style="width: 100%; padding: 12px; background: #000; border: 1px solid #27272a; border-radius: 4px; color: #fff; font-family: inherit; resize: none;"></textarea>
+    <button type="submit" class="btn" style="width: 100%; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">Mesajı İlet</button>
+</form>
+            </div>
+
+            <!-- SAĞ TARAF: İLETİŞİM BİLGİLERİ VE BAĞLANTILAR -->
+            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 20px;">
+                <!-- E-POSTA KUTUSU -->
+                <div style="background-color: var(--bg-darker); border: 1px solid #27272a; padding: 25px; border-radius: 6px;">
+                    <div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted-gray); letter-spacing: 1px; margin-bottom: 5px;">E-Posta</div>
+                    <a href="mailto:ahmcn0606@hotmail.com" style="font-size: 18px; font-weight: 600; color: #fff; word-break: break-all;">ahmcn0606@hotmail.com</a>
+                </div>
+                <!-- TELEFON KUTUSU -->
+                <div style="background-color: var(--bg-darker); border: 1px solid #27272a; padding: 25px; border-radius: 6px;">
+                    <div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted-gray); letter-spacing: 1px; margin-bottom: 5px;">Telefon</div>
+                    <a href="tel:+905397432442" style="font-size: 18px; font-weight: 600; color: #fff;">+90 (539) 743 24 42</a>
+                </div>
+                <!-- SOSYAL MEDYA KUTUSU -->
+                <div style="background-color: var(--bg-darker); border: 1px solid #27272a; padding: 25px; border-radius: 6px; display: flex; flex-direction: column; gap: 10px;">
+                    <div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted-gray); letter-spacing: 1px; margin-bottom: 5px;">Kurumsal Ağlar</div>
+                    <!-- Buradaki # işareti yerine kendi LinkedIn profil bağlantınızı yapıştırın -->
+                    <a href="https://www.linkedin.com/in/ahmetcan-biçer-35833926b" target="_blank" style="color: #fff; display: flex; align-items: center; gap: 10px; font-weight: 500;">💼 LinkedIn Profilini İncele &rarr;</a>
+                    <a href="https://wa.me" target="_blank" style="color: #fff; display: flex; align-items: center; gap: 10px; font-weight: 500;">💬 WhatsApp ile Mesaj At &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="text-align: center; width: 100%; padding: 20px 0;">
+    <p style="margin: 0; text-align: center; letter-spacing: 0.5px;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</p>
+</footer>
+
+
+    <script>
+    // Tarayıcı hafızasını kontrol et
+    if (sessionStorage.getItem('introSeen')) {
+        // Eğer introyu daha önce gördüyse, preloader ekranını kodla anında yok et
+        const preloader = document.querySelector('.preloader');
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    } else {
+        // Eğer sitenize ilk kez giriyorsa, introyu oynat ve hafızaya kaydet
+        sessionStorage.setItem('introSeen', 'true');
+    }
+</script>
+
+</body>
+</html>
