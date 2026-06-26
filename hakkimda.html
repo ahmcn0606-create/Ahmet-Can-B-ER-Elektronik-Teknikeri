@@ -3,76 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- TARAYICI SEKMESİNE İKON VE BAŞLIK -->
     <link rel="icon" type="image/png" href="ACB MONOGRAM_SİYAH.png">
     <title>Hakkımda │ Ahmet Can BİÇER</title>
-    
     <link rel="stylesheet" href="css-style.css">
-
     <style>
-        /* TELEFONLAR İÇİN MOBİL UYUM DÜZENLEMESİ */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 12px 20px !important;
-                flex-direction: column !important; /* Menüyü dikey hizaya çeker, taşmayı önler */
-                gap: 12px !important;
-            }
-            .navbar-brand {
-                border-right: none !important; /* Dikey çizgiyi mobilde kaldırır */
-                height: auto !important;
-            }
-            .nav-links {
-                gap: 15px !important;
-                flex-wrap: wrap !important; /* Linkleri sığmazsa alt satıra pürüzsüzce indirir */
-                justify-content: center !important;
-            }
-            .nav-links a {
-                font-size: 13px !important;
-            }
-            /* Hakkımda içeriklerinin üst menü altında kalmaması için padding payı */
-            .about-container, .container, .main-content {
-                padding-top: 150px !important; 
-            }
-            /* Başlık ve metinlerin mobilde küçülerek ekrana pürüzsüz sığması */
-            h1 { 
-                font-size: 26px !important; 
-            }
-            p, .about-text {
-                font-size: 15px !important;
-                line-height: 1.6 !important;
-            }
-            /* Deneyim/Eğitim Kartlarının Mobilde Taşmasını Önleme */
-            .card-grid, .grid, .experience-layout {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 20px !important;
-                width: 100% !important;
-            }
-            .info-card, .card, .about-card {
-                padding: 15px !important;
-                width: 100% !important; /* Kartları ekran genişliğine eşitler */
-            }
+            .navbar { padding: 12px 20px !important; flex-direction: column !important; gap: 12px !important; }
+            .navbar-brand { border-right: none !important; height: auto !important; }
+            .nav-links { gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
+            .nav-links a { font-size: 13px !important; }
+            .about-container { padding-top: 150px !important; }
+            h1 { font-size: 26px !important; }
+            p, .about-text { font-size: 15px !important; line-height: 1.6 !important; }
+            .btn-cv { width: 100% !important; text-align: center !important; }
+            .card-grid { display: flex !important; flex-direction: column !important; gap: 20px !important; width: 100% !important; }
+            .info-card { padding: 15px !important; width: 100% !important; }
         }
     </style>
 </head>
 <body style="background-color: #050505; margin: 0; overflow-x: hidden;">
 
-    <!-- ÜST MENÜ (LOGON, ÇİZGİN VE TÜRK BAYRAĞIN SAPASAĞLAM YERİNDE) -->
+    <!-- ÜST MENÜ (ANA SAYFA YAZISI KALDIRILDI) -->
     <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.03);">
-        <!-- SOL ÜST: ÇİZGİLİ SABİT LOGO ALANI -->
         <div class="navbar-brand" style="display: flex; align-items: center; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.1); height: 40px;">
             <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
         </div>
         
-        <!-- SAĞ ÜST: LİNKLER VE TÜRK BAYRAĞI -->
         <ul class="nav-links" style="display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
-            <li><a href="index.html" style="color: #a0a0a0; text-decoration: none;">Ana Sayfa</a></li>
             <li><a href="hakkimda.html" class="active" style="color: #ffffff; text-decoration: none; font-weight: 600;">Hakkımda</a></li>
             <li><a href="projelerim.html" style="color: #a0a0a0; text-decoration: none;">Projelerim</a></li>
             <li><a href="iletisim.html" style="color: #a0a0a0; text-decoration: none;">İletişim</a></li>
-            
-            <!-- EN SAĞ: YAN YANA TR YAZISI VE TÜRK BAYRAĞI -->
             <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); cursor: default;">
                 <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
                 <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
@@ -80,44 +40,31 @@
         </ul>
     </nav>
 
-    <!-- HAKKIMDA İÇERİK ALANI -->
     <main class="about-container" style="max-width: 800px; margin: 0 auto; padding: 120px 20px 60px 20px; min-height: 100vh; box-sizing: border-box;">
-        
+        <div style="margin-bottom: 15px;">
+            <a href="index.html" style="color: #00e5ff; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 5px;">&larr; Geri Dön</a>
+        </div>
         <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 25px; letter-spacing: 0.5px; border-bottom: 2px solid #00e5ff; display: inline-block; padding-bottom: 5px;">Hakkımda</h1>
-        
-        <p style="font-size: 16px; line-height: 1.8; color: #d0d0d0; margin-bottom: 45px; text-align: justify;">
-            Merhaba, ben Ahmet Can Biçer. Elektronik Teknikeri olarak, savunma sanayii teknolojileri, askeri radar sistemleri ve mekanik-elektronik entegrasyon süreçlerine derin bir ilgi duyuyorum. Eğitim hayatım boyunca edindiğim teorik bilgileri, pratik devre tasarımları, arıza arama-bulma ve prototip üretim süreçleriyle harmanlayarak kendimi sürekli güncel tutuyorum. Teknik disiplini ve yenilikçi üretim çözümlerini bir araya getirerek, sektöre değer katacak mühendislik çalışmalarına katkı sağlamayı hedefliyorum.
+        <p style="font-size: 16px; line-height: 1.8; color: #d0d0d0; margin-bottom: 25px; text-align: justify;">
+            Merhaba, ben Ahmet Can Biçer. Elektronik Teknikeri olarak, savunma sanayii teknolojileri, askeri radar sistemleri ve mekanik-elektronik entegrasyon süreçlerine derin bir ilgi duyuyorum. Eğitim hayatım boyunca edindiğim teorik bilgileri, pratik devre tasarımları, arıza arama-bulma 및 prototip üretim süreçleriyle harmanlayarak kendimi sürekli güncel tutuyorum. Teknik disiplini ve yenilikçi üretim çözümlerini bir araya getirerek, sektöre değer katacak mühendislik çalışmalarına katkı sağlamayı hedefliyorum.
         </p>
-
+        <div style="margin-bottom: 50px;">
+            <a href="cv.pdf" target="_blank" class="btn btn-cv" style="display: inline-block; padding: 12px 28px; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; font-weight: 600; background: transparent; color: #ffffff; border: 1px solid #ffffff; border-radius: 4px; text-decoration: none; transition: background 0.3s ease, color 0.3s ease;">Özgeçmişimi İncele</a>
+        </div>
         <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 25px; letter-spacing: 0.5px; border-bottom: 2px solid #00e5ff; display: inline-block; padding-bottom: 5px;">Deneyim & Eğitim</h1>
-        
         <div class="card-grid" style="display: flex; flex-direction: column; gap: 25px; width: 100%;">
-            
-            <!-- DENEYİM KARTI -->
             <div class="info-card" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 25px; box-sizing: border-box;">
                 <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Elektronik Teknikeri</h3>
                 <div style="font-size: 14px; color: #00e5ff; font-weight: 600; margin-bottom: 12px;">ACB Teknoloji & Savunma Sanayii Arşivi</div>
-                <p style="font-size: 14px; color: #a0a0a0; line-height: 1.6; margin: 0;">
-                    Gömülü sistemler, mikrodenetleyici programlama ve baskı devre kartı (PCB) tasarım süreçlerinin yürütülmesi. Elektronik sistemler üzerinde arıza analizi ve donanımsal iyileştirmelerin yapılması.
-                </p>
+                <p style="font-size: 14px; color: #a0a0a0; line-height: 1.6; margin: 0;">Gömülü sistemler, mikrodenetleyici programlama ve baskı devre kartı (PCB) tasarım süreçlerinin yürütülmesi. Elektronik sistemler üzerinde arıza analizi ve donanımsal iyileştirmelerin yapılması.</p>
             </div>
-
-            <!-- EĞİTİM KARTI -->
             <div class="info-card" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 6px; padding: 25px; box-sizing: border-box;">
                 <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Elektronik Teknolojisi Mezunu</h3>
                 <div style="font-size: 14px; color: #00e5ff; font-weight: 600; margin-bottom: 12px;">Teknik Yüksekokul / Üniversite</div>
-                <p style="font-size: 14px; color: #a0a0a0; line-height: 1.6; margin: 0;">
-                    Analog ve dijital elektronik, endüstriyel otomasyon sistemleri ve devre analizi üzerine kapsamlı teorik ve pratik uzmanlık eğitimi.
-                </p>
+                <p style="font-size: 14px; color: #a0a0a0; line-height: 1.6; margin: 0;">Analog ve dijital elektronik, endüstriyel otomasyon sistemleri ve devre analizi üzerine kapsamlı teorik ve pratik uzmanlık eğitimi.</p>
             </div>
-
         </div>
     </main>
-
-    <!-- FOOTER -->
-    <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); border-top: 1px solid rgba(255,255,255,0.02); width: 100%; box-sizing: border-box;">
-        &copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.
-    </footer>
-
+    <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); border-top: 1px solid rgba(255,255,255,0.02); width: 100%; box-sizing: border-box;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
 </body>
 </html>
