@@ -8,28 +8,33 @@
     <link rel="stylesheet" href="css-style.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #0b0b0b; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
+        body { background-color: #0b0b0b; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow: hidden; }
+        
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .navbar-brand { display: flex; align-items: center; padding-right: 15px; border-right: 1px solid rgba(255, 255, 255, 0.1); height: 35px; }
         .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
         .nav-links a { color: #a0a0a0; text-decoration: none; font-size: 14px; font-weight: 500; }
-        .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 120px 20px 40px 20px; max-width: 800px; margin: 0 auto; }
-        .main-title { font-size: 46px; font-weight: 800; color: #ffffff; letter-spacing: 2px; }
+        
+        /* SARMAL ANİMASYONUNUZUN TAM ORTADA DURACAĞI ALAN */
+        .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; padding: 80px 20px; margin: 0 auto; position: relative; }
+        
+        /* Animasyon.html'i ekrana kusursuz ve kaymasız sığdıran akıllı çerçeve */
+        #sarmal-frame { width: 100%; max-width: 700px; height: 500px; border: none; background: transparent; overflow: hidden; z-index: 5; }
 
         @media (max-width: 768px) {
             .navbar { padding: 12px 20px; flex-direction: column; gap: 12px; }
             .navbar-brand { border-right: none; height: auto; }
             .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .main-container { padding-top: 160px; }
-            .main-title { font-size: 32px; }
+            #sarmal-frame { height: 350px; } /* Mobilde ekranı kaplaması için küçültme */
         }
     </style>
 </head>
 <body>
 
+    <!-- 3 SANİYELİK PARLAYAN AÇILIŞ LOGO INTROSU -->
     <div class="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0b0b; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease;">
         <div style="position: relative; width: 140px; height: 140px; display: flex; justify-content: center; align-items: center;">
-            <div style="absolute; width: 100%; height: 100%; border: 3px solid rgba(255, 255, 255, 0.05); border-top: 3px solid #ffffff; border-radius: 50%; animation: spinRing 2s linear infinite;"></div>
+            <div style="position: absolute; width: 100%; height: 100%; border: 3px solid rgba(255, 255, 255, 0.05); border-top: 3px solid #ffffff; border-radius: 50%; animation: spinRing 2s linear infinite;"></div>
             <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Monogram" style="width: 85px; height: auto; filter: drop-shadow(0 0 15px rgba(255,255,255,0.3)); animation: pulseGlow 2s ease-in-out infinite;">
         </div>
     </div>
@@ -39,6 +44,7 @@
         @keyframes pulseGlow { 0% { transform: scale(0.95); opacity: 0.6; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.6; } }
     </style>
 
+    <!-- ÜST MENÜ -->
     <nav class="navbar">
         <div class="navbar-brand">
             <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 35px; height: auto; display: block;">
@@ -53,18 +59,22 @@
         </ul>
     </nav>
 
+    <!-- SARMAL ANİMASYONUN SIĞACAĞI KATMAN -->
     <main class="main-container">
-        <!-- SADECE ASİL İSMİN KALDI -->
-        <h1 class="main-title">Ahmet Can BİÇER</h1>
+        <iframe id="sarmal-frame" src="animasyon.html" scrolling="no"></iframe>
     </main>
 
     <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); width: 100%; border-top: 1px solid rgba(255,255,255,0.02);">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
 
+    <!-- SAYFA DEĞİŞİRKEN GELMEYEN, SADECE YENİLEMEDE (F5) TETİKLENEN HAFIZA MOTORU -->
     <script>
         const preloader = document.querySelector('.preloader');
-        if (sessionStorage.getItem('introSeenSession')) {
-            if (preloader) { preloader.style.display = 'none'; }
-        } else {
+        
+        // Tarayıcının performans hafızasından sayfanın yenilenip yenilenmediğini (F5) kontrol et
+        const isPageRefreshed = performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+        if (isPageRefreshed) {
+            // Eğer sayfa yenilendiyse introyu her zaman 3 saniye çalıştır
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     if (preloader) {
@@ -74,7 +84,9 @@
                     }
                 }, 3000); 
             });
-            sessionStorage.setItem('introSeenSession', 'true');
+        } else {
+            // Başka bir sayfadan geri gelindiğinde introyu gösterme, doğrudan içeriği aç
+            if (preloader) { preloader.style.display = 'none'; }
         }
     </script>
 </body>
