@@ -3,194 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- TARAYICI SEKMESİNE İKON VE BAŞLIK -->
     <link rel="icon" type="image/png" href="ACB MONOGRAM_SİYAH.png">
     <title>İletişim │ Ahmet Can BİÇER</title>
-    
     <link rel="stylesheet" href="css-style.css">
-
     <style>
-        /* TELEFONLAR İÇİN MOBİL UYUM DÜZENLEMESİ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .navbar-brand { display: flex; align-items: center; height: 40px; }
+        
+        .contact-container { max-width: 600px; margin: 0 auto; padding: 140px 20px 60px 20px; min-height: 100vh; box-sizing: border-box; }
+        
+        /* Kurumsal Form Alanı Stilleri */
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 13px; font-weight: 600; color: #888888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .form-input { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #ffffff; font-family: inherit; font-size: 14px; transition: border-color 0.3s ease; }
+        .form-input:focus { outline: none; border-color: #ffffff; }
+        .btn-submit { width: 100%; padding: 14px; background: #ffffff; color: #000000; border: none; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; cursor: pointer; transition: background 0.3s ease; }
+        .btn-submit:hover { background: #e0e0e0; }
+
         @media (max-width: 768px) {
-            .navbar {
-                padding: 12px 20px !important;
-                flex-direction: column !important; /* Menüyü dikey hizaya çeker, taşmayı önler */
-                gap: 12px !important;
-            }
-            .navbar-brand {
-                border-right: none !important; /* Dikey çizgiyi mobilde kaldırır */
-                height: auto !important;
-            }
-            .nav-links {
-                gap: 15px !important;
-                flex-wrap: wrap !important; /* Linkleri sığmazsa alt satıra pürüzsüzce indirir */
-                justify-content: center !important;
-            }
-            .nav-links a {
-                font-size: 13px !important;
-            }
-            /* İletişim alanının üst menü altında kalmaması için padding payı */
-            .container, .contact-container {
-                padding-top: 160px !important; 
-            }
-            /* Form ve girdi alanlarının mobilde tam oturması */
+            .navbar { padding: 12px 20px !important; }
+            .contact-container { padding-top: 130px !important; }
             h1 { font-size: 26px !important; }
-            form, .contact-form {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 15px !important;
-            }
-            input, textarea {
-                font-size: 14px !important;
-            }
-
-                    /* İletişim Kapsayıcı ve Form Alanı Ayarları */
-        .contact-container, .container { 
-            max-width: 600px !important; 
-            margin: 0 auto !important; 
-            padding: 140px 20px 60px 20px !important; /* Menünün altında kalmayı önler */
-            box-sizing: border-box !important; 
-        }
-
-        /* TELEFONLAR İÇİN FORM DÜZENLEME */
-        @media (max-width: 768px) {
-            .navbar { padding: 12px 20px !important; flex-direction: column !important; gap: 12px !important; }
-            .navbar-brand { border-right: none !important; height: auto !important; }
-            .nav-links { gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
-            .contact-container, .container { padding-top: 170px !important; }
-            h1 { font-size: 26px !important; }
-            
-            /* Form kutusunun mobilde tam genişlikte ve pürüzsüz durması */
-            form, .contact-form {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 15px !important;
-            }
-            input, textarea, button, .btn {
-                width: 100% !important; /* Girdi alanlarını ekrana eşitler */
-                font-size: 14px !important;
-            }
-        }
-
+            form, .contact-form { padding: 15px !important; width: 100% !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ÜST MENÜ (LOGON, ÇİZGİN VE TÜRK BAYRAĞIN SAPASAĞLAM YERİNDE) -->
-        <!-- MENÜ LİNKLERİ YOK - SADECE LOGO VE TR BAYRAK VAR -->
-    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.03);">
-        <div class="navbar-brand" style="border: none;">
+    <!-- MENÜSÜZ SABİT LOGOLU ÜST BAR -->
+    <nav class="navbar">
+        <div class="navbar-brand">
             <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 13px; font-weight: 700; color: #ffffff;">TR</span>
+            <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
             <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px;">
         </div>
     </nav>
 
-
-
-
-    <!-- ÜST MENÜ -->
-   <!-- GERİ DÖNÜŞ BUTONLU İLETİŞİM MENÜSÜ -->
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <div class="nav-logo-circle">
-                <div class="nav-logo-top">ACB</div>
-                <div class="nav-logo-bottom">DESIGN</div>
-            </div>
-            <a href="index.html" style="font-size: 14px; font-weight: 600; letter-spacing: 1px; color: var(--text-pure-white); margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
-                &larr; GERİ DÖN
-            </a>
+    <main class="contact-container">
+        <!-- ANA SAYFAYA DÖNÜŞ BAĞLANTI LİNKİ -->
+        <div style="margin-bottom: 25px;">
+            <a href="index.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; opacity: 0.8;">&larr; Ana Sayfaya Dön</a>
         </div>
         
-        <ul class="nav-links">
-<!-- YAN YANA TR YAZISI VE PNG TÜRK BAYRAĞI ENTEGRASYONU -->
-<li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); margin-left: 10px; cursor: default;">
-    <!-- TR Yazısı -->
-    <span style="font-size: 13px; font-weight: 700; letter-spacing: 1px; color: var(--text-pure-white);">TR</span>
-    <!-- Klasörünüzden Okunan Keskin PNG Bayrak -->
-    <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 26px; height: auto; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); border-radius: 2px;">
-</li>
-
-
-        </ul>
-    </nav>
-
-    <!-- İLETİŞİM ALANI -->
-    <main class="container" style="max-width: 1000px; padding-bottom: 120px;">
-<div style="margin-bottom: 25px; padding-top: 140px;">
-    <a href="index.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; opacity: 0.7;">&larr; Ana Sayfaya Dön</a>
-</div>
-
-        <h2 style="text-align: center; margin-bottom: 10px;">Birlikte <span class="highlight">Çalışalım</span></h2>
-        <p style="text-align: center; color: var(--text-muted-gray); margin-bottom: 40px;">Projeleriniz, iş teklifleriniz veya teknik danışmanlık talepleriniz için bana ulaşabilirsiniz.</p>
-
-        <!-- Telefonlarda esneyen ve iç içe girmeyen iletişim kartları -->
-        <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 30px; justify-content: space-between;">
-            
-            <!-- SOL TARAF: DOĞRUDAN MAİL PANELİ -->
-            <div style="flex: 1; min-width: 300px; background-color: var(--bg-darker); border: 1px solid #27272a; padding: 30px; border-radius: 6px;">
-                <h3 style="font-size: 18px; margin-bottom: 20px;">Hızlı Mesaj Gönder</h3>
-                <!-- Formspree ücretsiz servisi sayesinde buraya yazılan mesajlar direkt mailinize düşer -->
-               <!-- Otomatik doldurması kapatılmış, doğrudan size gelen mesaj formu -->
-<form action="https://formspree.io" method="POST" autocomplete="off" style="display: flex; flex-direction: column; gap: 15px;">
-    <!-- Tarayıcıyı yanıltmak için gizli sahte kutular (Kendi bilgilerinizi buraya basıp asıl kutuları boş bırakır) -->
-    <input type="text" name="_fake_username" style="display:none" autocomplete="off">
-    <input type="password" name="_fake_password" style="display:none" autocomplete="off">
-    
-    <!-- Ziyaretçinin kendi bilgilerini yazacağı asıl temiz kutular -->
-    <input type="text" name="name" placeholder="Adınız Soyadınız" required autocomplete="new-password" style="width: 100%; padding: 12px; background: #000; border: 1px solid #27272a; border-radius: 4px; color: #fff; font-family: inherit;">
-    <input type="email" name="email" placeholder="E-Posta Adresiniz" required autocomplete="new-password" style="width: 100%; padding: 12px; background: #000; border: 1px solid #27272a; border-radius: 4px; color: #fff; font-family: inherit;">
-    <textarea name="message" rows="5" placeholder="Mesajınız..." required style="width: 100%; padding: 12px; background: #000; border: 1px solid #27272a; border-radius: 4px; color: #fff; font-family: inherit; resize: none;"></textarea>
-    <button type="submit" class="btn" style="width: 100%; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">Mesajı İlet</button>
-</form>
+        <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 30px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px; letter-spacing: 1px;">İletişim</h1>
+        
+        <!-- TEKNİK İLETİŞİM FORMU -->
+        <form action="https://formspree.io" method="POST" class="contact-form">
+            <div class="form-group">
+                <label class="form-label">Adınız Soyadınız</label>
+                <input type="text" name="name" class="form-input" required placeholder="Örn: Ahmet Yılmaz">
             </div>
-
-            <!-- SAĞ TARAF: İLETİŞİM BİLGİLERİ VE BAĞLANTILAR -->
-            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 20px;">
-                <!-- E-POSTA KUTUSU -->
-                <div style="background-color: var(--bg-darker); border: 1px solid #27272a; padding: 25px; border-radius: 6px;">
-                    <div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted-gray); letter-spacing: 1px; margin-bottom: 5px;">E-Posta</div>
-                    <a href="mailto:ahmcn0606@hotmail.com" style="font-size: 18px; font-weight: 600; color: #fff; word-break: break-all;">ahmcn0606@hotmail.com</a>
-                </div>
-                <!-- TELEFON KUTUSU -->
-                <div style="background-color: var(--bg-darker); border: 1px solid #27272a; padding: 25px; border-radius: 6px;">
-                    <div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted-gray); letter-spacing: 1px; margin-bottom: 5px;">Telefon</div>
-                    <a href="tel:+905397432442" style="font-size: 18px; font-weight: 600; color: #fff;">+90 (539) 743 24 42</a>
-                </div>
-                <!-- SOSYAL MEDYA KUTUSU -->
-                <div style="background-color: var(--bg-darker); border: 1px solid #27272a; padding: 25px; border-radius: 6px; display: flex; flex-direction: column; gap: 10px;">
-                    <div style="font-size: 12px; text-transform: uppercase; color: var(--text-muted-gray); letter-spacing: 1px; margin-bottom: 5px;">Kurumsal Ağlar</div>
-                    <!-- Buradaki # işareti yerine kendi LinkedIn profil bağlantınızı yapıştırın -->
-                    <a href="https://www.linkedin.com/in/ahmetcan-biçer-35833926b" target="_blank" style="color: #fff; display: flex; align-items: center; gap: 10px; font-weight: 500;">💼 LinkedIn Profilini İncele &rarr;</a>
-                    <a href="https://wa.me" target="_blank" style="color: #fff; display: flex; align-items: center; gap: 10px; font-weight: 500;">💬 WhatsApp ile Mesaj At &rarr;</a>
-                </div>
+            <div class="form-group">
+                <label class="form-label">E-Posta Adresiniz</label>
+                <input type="email" name="email" class="form-input" required placeholder="name@company.com">
             </div>
-
-        </div>
+            <div class="form-group">
+                <label class="form-label">Mesajınız</label>
+                <textarea name="message" rows="5" class="form-input" required placeholder="Teknik iş teklifleri veya mesajınızı buraya yazın..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Mesajı Gönder</button>
+        </form>
     </main>
 
-    <footer style="text-align: center; width: 100%; padding: 20px 0;">
-    <p style="margin: 0; text-align: center; letter-spacing: 0.5px;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</p>
-</footer>
-
-
-    <script>
-    // Tarayıcı hafızasını kontrol et
-    if (sessionStorage.getItem('introSeen')) {
-        // Eğer introyu daha önce gördüyse, preloader ekranını kodla anında yok et
-        const preloader = document.querySelector('.preloader');
-        if (preloader) {
-            preloader.style.display = 'none';
-        }
-    } else {
-        // Eğer sitenize ilk kez giriyorsa, introyu oynat ve hafızaya kaydet
-        sessionStorage.setItem('introSeen', 'true');
-    }
-</script>
+    <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); border-top: 1px solid rgba(255,255,255,0.02); width: 100%; box-sizing: border-box;">
+        &copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.
+    </footer>
 
 </body>
 </html>
