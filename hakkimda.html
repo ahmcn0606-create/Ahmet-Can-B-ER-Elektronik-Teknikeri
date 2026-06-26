@@ -18,7 +18,7 @@
         .skill-item { margin-bottom: 20px; }
         .skill-info { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #aaaaaa; text-transform: uppercase; margin-bottom: 8px; }
         .skill-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
-        .skill-bar-fill { height: 100%; background: #ffffff; border-radius: 10px; box-shadow: 0 0 8px rgba(255,255,255,0.5); }
+        .skill-bar-fill { height: 100%; background: #ffffff; border-radius: 10px; }
         .card-grid { display: flex; flex-direction: column; gap: 25px; width: 100%; }
         .info-card { background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 6px; padding: 25px; }
 
@@ -41,9 +41,9 @@
         <ul class="nav-links">
             <li><a href="#" style="color: #ffffff; font-weight: 600;">Hakkımda</a></li>
             <li><a href="projelerim.html" style="color: #888888;">Projelerim</a></li>
-            <!-- İLETİŞİM YERİNE GELEN, TASARIMI TAMAMEN FARKLI KURUMSAL PARLAK CV TUŞU -->
+            <!-- BEYAZ SADE VE SADECE "CV" YAZAN BUTON -->
             <li>
-                <a href="cv.pdf" target="_blank" style="color: #00e5ff; text-decoration: none; font-size: 13px; font-weight: 700; border: 1px solid #00e5ff; padding: 6px 14px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0,229,255,0.1);">CV İndir</a>
+                <a href="cv.pdf" target="_blank" style="color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; border: 1px solid #ffffff; padding: 6px 16px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">CV</a>
             </li>
             <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255,255,255,0.1);">
                 <span style="font-size: 13px; font-weight: 700; color: #ffffff;">TR</span>
@@ -53,30 +53,37 @@
     </nav>
 
     <main class="about-container">
-        <!-- TEKNO MAVİ GERİ DÖN LİNKİ -->
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 25px;">
             <a href="index.html" style="color: #00e5ff; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">&larr; Ana Sayfaya Dön</a>
         </div>
 
-        <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 25px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px; letter-spacing: 1px;">Hakkımda</h1>
-        <p style="font-size: 16px; line-height: 1.8; color: #cccccc; margin-bottom: 35px; text-align: justify;">
-            Merhaba, ben Ahmet Can Biçer. Elektronik Teknikeri olarak, savunma sanayii teknolojileri, askeri radar sistemleri ve mekanik-elektronik entegrasyon süreçlerine derin bir ilgi duyuyorum...
+        <!-- ANA SAYFADAN BURAYA TAŞINAN BAŞLIK, SUBTITLE VE PROFİL GÖRSELİ -->
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 40px;">
+            <img src="anasayfa_fotograf.jpeg" alt="Ahmet Can Biçer" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.4); margin-bottom: 20px;">
+            <h2 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 5px;">Ahmet Can BİÇER</h2>
+            <div style="font-size: 14px; color: #888888; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Elektronik Teknikeri</div>
+        </div>
+
+        <h1 style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 20px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">Kariyer Özeti</h1>
+        <p style="font-size: 15px; line-height: 1.8; color: #cccccc; margin-bottom: 35px; text-align: justify;">
+            Elektronik devre tasarımı, donanımsal arıza bakım-onarım ve gömülü sistem mimarileri alanında uzmanlaşmış dinamik bir Elektronik Teknikeriyim. Savunma sanayii odaklı teknolojik altyapılara duyduğum yüksek ilgiyle; Altium Designer ve Proteus üzerinde çok katmanlı PCB tasarımları gerçekleştiriyor, osiloskop ve ileri ölçüm cihazlarıyla kompleks kartlar üzerinde sinyal/arıza takibi yürütüyorum. Teknik disiplini, teorik analiz gücü ve pratik üretim refleksleriyle birleştirerek AR-GE ve üretim süreçlerine çok yönlü katkı sağlamayı amaçlıyorum.
         </p>
 
+        <!-- MAKSİMUM 1 YERDE MAVİ RADAR DETAYLI BAŞLIK -->
         <div class="skills-section">
-            <h2 style="font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 25px; letter-spacing: 1px; text-transform: uppercase;">Program & Teknik Bilgi</h2>
+            <h2 style="font-size: 16px; font-weight: 800; color: #00e5ff; margin-bottom: 25px; letter-spacing: 1px; text-transform: uppercase;">Program & Teknik Bilgi</h2>
             <div class="skill-item"><div class="skill-info"><span>Altium Designer / Proteus (PCB Tasarım)</span><span>%85</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div></div>
             <div class="skill-item"><div class="skill-info"><span>C++ / Arduino (Gömülü Sistemler)</span><span>%75</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div></div>
             <div class="skill-item"><div class="skill-info"><span>Arıza Bakım-Onarım & Devre Analizi</span><span>%90</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div></div>
             <div class="skill-item"><div class="skill-info"><span>SolidWorks (Mekanik Modelleme)</span><span>%50</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 50%;"></div></div></div>
         </div>
 
-        <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 25px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px; letter-spacing: 1px;">Deneyim & Eğitim</h1>
+        <h1 style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 25px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">Deneyim & Eğitim</h1>
         <div class="card-grid">
             <div class="info-card">
-                <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 5px;">Elektronik Teknikeri</h3>
-                <div style="font-size: 14px; color: #888888; font-weight: 600; margin-bottom: 12px; text-transform: uppercase;">ACB Teknoloji & Savunma Sanayii Arşivi</div>
-                <p style="font-size: 14px; color: #aaaaaa; line-height: 1.6;">Gömülü sistemler, mikrodenetleyici programlama ve baskı devre kartı (PCB) tasarım süreçlerinin yürütülmesi...</p>
+                <h3 style="font-size: 17px; font-weight: 700; color: #ffffff; margin-bottom: 5px;">Elektronik Teknikeri</h3>
+                <div style="font-size: 13px; color: #888888; font-weight: 600; margin-bottom: 12px; text-transform: uppercase;">ACB Teknoloji & Savunma Sanayii Arşivi</div>
+                <p style="font-size: 14px; color: #aaaaaa; line-height: 1.6;">Gömülü sistemler, mikrodenetleyici programlama ve baskı devre kartı (PCB) tasarım süreçlerinin yürütülmesi. Elektronik sistemler üzerinde arıza analizi ve donanımsal iyileştirmelerin yapılması.</p>
             </div>
         </div>
     </main>

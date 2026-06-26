@@ -10,20 +10,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .navbar-brand { display: flex; align-items: center; height: 40px; }
         .contact-container { max-width: 600px; margin: 0 auto; padding: 140px 20px 60px 20px; min-height: 100vh; box-sizing: border-box; }
         .form-group { margin-bottom: 20px; }
-        .form-label { display: block; font-size: 13px; font-weight: 600; color: #888888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .form-input { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #ffffff; font-family: inherit; font-size: 14px; transition: border-color 0.3s ease; }
-        .form-input:focus { outline: none; border-color: #ffffff; }
-        .btn-submit { width: 100%; padding: 14px; background: #ffffff; color: #000000; border: none; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; cursor: pointer; transition: background 0.3s ease; }
-        .btn-submit:hover { background: #e0e0e0; }
+        .form-label { display: block; font-size: 13px; label-spacing: 1px; margin-bottom: 8px; color: #888; text-transform: uppercase; }
+        .form-input { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #ffffff; font-size: 14px; }
+        .btn-submit { width: 100%; padding: 14px; background: #ffffff; color: #000000; border: none; border-radius: 4px; font-weight: 600; text-transform: uppercase; font-size: 13px; cursor: pointer; }
 
         @media (max-width: 768px) {
             .navbar { padding: 12px 20px !important; }
             .contact-container { padding-top: 130px !important; }
             h1 { font-size: 26px !important; }
-            form, .contact-form { padding: 15px !important; width: 100% !important; }
         }
     </style>
 </head>
@@ -34,36 +30,26 @@
             <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 13px; font-weight: 700; color: #ffffff; letter-spacing: 1px;">TR</span>
+            <span style="font-size: 13px; font-weight: 700; color: #ffffff;">TR</span>
             <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px;">
         </div>
     </nav>
 
     <main class="contact-container">
-        <!-- TEKNO MAVİ GERİ DÖN LİNKİ -->
+        <!-- MAWİ LİNK ENTEGRESİ -->
         <div style="margin-bottom: 25px;">
             <a href="index.html" style="color: #00e5ff; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">&larr; Ana Sayfaya Dön</a>
         </div>
         
-        <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 30px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px; letter-spacing: 1px;">İletişim</h1>
+        <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 30px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">İletişim</h1>
         
-        <form action="https://formspree.io" method="POST" class="contact-form">
-            <div class="form-group">
-                <label class="form-label">Adınız Soyadınız</label>
-                <input type="text" name="name" class="form-input" required placeholder="Örn: Ahmet Yılmaz">
-            </div>
-            <div class="form-group">
-                <label class="form-label">E-Posta Adresiniz</label>
-                <input type="email" name="email" class="form-input" required placeholder="name@company.com">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Mesajınız</label>
-                <textarea name="message" rows="5" class="form-input" required placeholder="Teknik iş teklifleri veya mesajınızı buraya yazın..."></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Mesajı Gönder</button>
+        <form action="#" method="POST" class="contact-form">
+            <div class="form-group"><label class="form-label">Adınız Soyadınız</label><input type="text" class="form-input" required></div>
+            <div class="form-group"><label class="form-label">E-Posta</label><input type="email" class="form-input" required></div>
+            <div class="form-group"><label class="form-label">Mesaj</label><textarea rows="5" class="form-input" required></textarea></div>
+            <button type="submit" class="btn-submit">Gönder</button>
         </form>
     </main>
-
     <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); border-top: 1px solid rgba(255,255,255,0.02); width: 100%; box-sizing: border-box;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
 </body>
 </html>
