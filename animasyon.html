@@ -14,26 +14,44 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let stars = Array.from({length: 400}, () => ({
-            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-            size: Math.random() * 1.5, opacity: Math.random(),
-            color: Math.random() > 0.9 ? '#ff0033' : '#ffffff'
+        // Yıldızları oluştur ve her birine kayma (drift) hızı ver
+        const stars = Array.from({length: 400}, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 1.5,
+            opacity: Math.random(),
+            color: Math.random() > 0.9 ? '#ff0033' : '#ffffff',
+            driftX: (Math.random() - 0.5) * 0.2, // X yönünde yavaş kayma
+            driftY: (Math.random() - 0.5) * 0.2  // Y yönünde yavaş kayma
         }));
 
         function animate() {
-            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#000"; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Karadelik Merkezi (Sadece ışık yutma/derinlik efekti)
+            // Karadelik Merkezi (Sabit)
             let grad = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, 250);
             grad.addColorStop(0, 'rgba(10, 0, 5, 0.8)'); 
             grad.addColorStop(1, 'transparent');
-            ctx.fillStyle = grad; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = grad; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            // Yıldızları güncelle ve çiz
             stars.forEach(s => {
-                ctx.fillStyle = s.color; ctx.globalAlpha = s.opacity;
-                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill();
+                // Sadece kayma hareketini uygula
+                s.x += s.driftX;
+                s.y += s.driftY;
+
+                // Ekran sınırlarında döngü
+                if (s.x < 0) s.x = canvas.width; if (s.x > canvas.width) s.x = 0;
+                if (s.y < 0) s.y = canvas.height; if (s.y > canvas.height) s.y = 0;
+
+                ctx.fillStyle = s.color;
+                ctx.globalAlpha = s.opacity;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
             });
-            ctx.globalAlpha = 1.0;
             requestAnimationFrame(animate);
         }
         animate();
