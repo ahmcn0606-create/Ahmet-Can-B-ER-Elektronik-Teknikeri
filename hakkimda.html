@@ -9,34 +9,32 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; min-height: 100vh; padding-bottom: 70px; }
-        /* Belirgin beyaz grid */
         body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 60px 60px; z-index: -1; }
 
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255,255,255,0.2); }
         .navbar::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(to right, #ffffff, transparent); }
         
-        /* Kutucuklar: Beyaz geçişli kenarlık ve kırmızı iç ışık */
-        .info-card { background: rgba(11, 11, 11, 0.7); border: 1px solid #ffffff; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: inset 0 0 15px rgba(255, 0, 51, 0.15); }
+        /* Iç süzme ışıklı kutular */
+        .info-card { background: rgba(11, 11, 11, 0.7); border: 1px solid #ffffff; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: inset 0 0 25px rgba(255, 0, 51, 0.3); }
         
-        .edu-btn { background: transparent; border: 1px solid #ffffff; color: #fff; padding: 10px; width: 100%; cursor: pointer; margin-bottom: 10px; transition: all 0.3s ease; }
-        .edu-btn:hover { transform: scale(1.02); box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ff0033; }
+        .edu-btn { background: rgba(255,255,255,0.05); border: 1px solid #ffffff; color: #fff; padding: 12px 20px; width: 100%; cursor: pointer; margin-bottom: 12px; transition: all 0.3s ease; text-align: left; border-radius: 0 20px 20px 0; display: flex; align-items: center; gap: 10px; }
+        .edu-btn:hover { background: #ff0033; border-color: #ff0033; transform: scale(1.02); }
 
-        .skill-bar-fill { height: 100%; background: linear-gradient(to right, #ff0033, #880011); border-radius: 10px; }
-        
-        footer { position: fixed; bottom: 0; width: 100%; padding: 20px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.9); border-top: 1px solid #ffffff; }
+        footer { position: fixed; bottom: 0; width: 100%; padding: 20px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.9); border-top: 1px solid rgba(255,255,255,0.2); }
+        footer::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(to left, #ffffff, transparent); }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="navbar-brand" style="border: 1px solid #ffffff; border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(255, 0, 51, 0.6);">
+        <div class="navbar-brand" style="border: 1px solid #ffffff; border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);">
             <img src="ACB MONOGRAM_BEYAZ.png" style="width: 30px; display: block;">
         </div>
         <ul class="nav-links" style="display: flex; gap: 20px; list-style: none; align-items: center;">
             <li><a href="index.html" style="color: #888; text-decoration: none;">Ana Sayfa</a></li>
             <li><a href="#" style="color: #ff0033; font-weight: 700; text-decoration: none;">Hakkımda</a></li>
             <li><a href="projelerim.html" style="color: #888; text-decoration: none;">Projelerim</a></li>
-            <li><a href="cv.pdf" target="_blank" style="color: #ffffff; border: 1px solid #ff0033; padding: 6px 16px; border-radius: 4px; text-decoration: none; font-size: 13px;">CV</a></li>
+            <li><a href="cv.pdf" target="_blank" style="color: #ffffff; border: 1px solid #ffffff; padding: 6px 16px; border-radius: 4px; text-decoration: none; font-size: 13px; box-shadow: 0 0 8px rgba(255, 0, 51, 0.3);">CV</a></li>
         </ul>
     </nav>
 
@@ -46,14 +44,6 @@
                 <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 18px;">Program Bilgisi</h2>
                 <div class="skill-item"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Altium / Proteus <span>85%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%;"></div></div></div>
                 <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">C++ / Arduino <span>75%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 75%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Bakım-Onarım <span>90%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 90%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">SolidWorks <span>85%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%;"></div></div></div>
-            </div>
-            <div class="info-card">
-                <button class="edu-btn">Özgeçmiş</button>
-                <button class="edu-btn">Sertifikalar</button>
-                <button class="edu-btn">Detay</button>
-                <button class="edu-btn">Eğitimler</button>
             </div>
         </div>
 
@@ -62,7 +52,14 @@
                 <img src="anasayfa_fotograf.jpeg" style="width: 120px; border-radius: 50%; margin-bottom: 15px;">
                 <h1 style="margin-bottom: 5px; color: #fff;">Ahmet Can BİÇER</h1>
                 <p style="color: #ff0033; font-weight: 600; margin-bottom: 15px;">Elektronik Teknikeri</p>
-                <p style="color: #ccc; line-height: 1.6; text-align: justify;">Elektronik devre tasarımı, donanımsal arıza bakım-onarım ve gömülü sistem mimarileri alanında uzmanlaşmış dinamik bir Elektronik Teknikeriyim. Savunma sanayii odaklı teknolojik altyapılara duyduğum yüksek ilgiyle; Altium Designer ve Proteus üzerinde çok katmanlı PCB tasarımları gerçekleştiriyor, osiloskop ve ileri ölçüm cihazlarıyla kompleks kartlar üzerinde sinyal/arıza takibi yürütüyorum.</p>
+                <p style="color: #ccc; line-height: 1.6; text-align: justify; margin-bottom: 20px;">Elektronik devre tasarımı, donanımsal arıza bakım-onarım ve gömülü sistem mimarileri alanında uzmanlaşmış dinamik bir Elektronik Teknikeriyim. Savunma sanayii odaklı teknolojik altyapılara duyduğum yüksek ilgiyle; Altium Designer ve Proteus üzerinde çok katmanlı PCB tasarımları gerçekleştiriyor, osiloskop ve ileri ölçüm cihazlarıyla kompleks kartlar üzerinde sinyal/arıza takibi yürütüyorum.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button class="edu-btn"><span>📄</span> Özgeçmiş</button>
+                    <button class="edu-btn"><span>🏆</span> Sertifikalar</button>
+                    <button class="edu-btn"><span>🔍</span> Detay</button>
+                    <button class="edu-btn"><span>🎓</span> Eğitimler</button>
+                </div>
             </div>
         </div>
     </main>
