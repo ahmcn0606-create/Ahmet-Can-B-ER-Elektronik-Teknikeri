@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
     <style>
-        body, html { margin: 0; padding: 0; overflow: hidden; background: #000; }
-        canvas { display: block; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+        #canvas { display: block; }
+        .moon { position: absolute; top: 50px; right: 50px; width: 100px; height: 100px; 
+                background: radial-gradient(circle at 30% 30%, #fff, #aaa); 
+                border-radius: 50%; box-shadow: 0 0 50px rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
-    <canvas id="starfield"></canvas>
+    <div class="moon"></div>
+    <canvas id="canvas"></canvas>
     <script>
-        const canvas = document.getElementById('starfield');
+        const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 
-        const stars = Array.from({ length: 200 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 1.5,
-            speed: Math.random() * 0.5
+        let stars = Array.from({length: 300}, () => ({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            size: Math.random() * 1.5, speed: Math.random() * 0.2
         }));
 
+        let shootingStar = null;
+
         function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Yıldızlar
+            ctx.fillStyle = "#fff";
             stars.forEach(s => {
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                ctx.fill();
-                s.y += s.speed;
-                if (s.y > canvas.height) s.y = 0;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
+                s.y += s.speed; if(s.y > canvas.height) s.y = 0;
             });
+
+            // Kayan Yıldız Mantığı
+            if(!shootingStar && Math.random() < 0.01) {
+                shootingStar = { x: Math.random() * canvas.width, y: 0, length: 100 };
+            }
+            if(shootingStar) {
+                ctx.strokeStyle = "#fff"; ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.moveTo(shootingStar.x, shootingStar.y);
+                ctx.lineTo(shootingStar.x + shootingStar.length, shootingStar.y + shootingStar.length);
+                ctx.stroke();
+                shootingStar.x += 10; shootingStar.y += 10;
+                if(shootingStar.x > canvas.width) shootingStar = null;
+            }
             requestAnimationFrame(draw);
         }
         draw();
