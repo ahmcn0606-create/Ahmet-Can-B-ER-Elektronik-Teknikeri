@@ -2,53 +2,38 @@
 <html>
 <head>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
-        #canvas { display: block; }
-        .moon { position: absolute; top: 50px; right: 50px; width: 100px; height: 100px; 
-                background: radial-gradient(circle at 30% 30%, #fff, #aaa); 
-                border-radius: 50%; box-shadow: 0 0 50px rgba(255,255,255,0.2); }
+        body { margin: 0; background: #000; overflow: hidden; }
+        #spaceCanvas { display: block; }
     </style>
 </head>
 <body>
-    <div class="moon"></div>
-    <canvas id="canvas"></canvas>
+    <canvas id="spaceCanvas"></canvas>
     <script>
-        const canvas = document.getElementById('canvas');
+        const canvas = document.getElementById('spaceCanvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        let stars = Array.from({length: 300}, () => ({
+        let stars = Array.from({length: 400}, () => ({
             x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-            size: Math.random() * 1.5, speed: Math.random() * 0.2
+            size: Math.random() * 1.5, opacity: Math.random(),
+            color: Math.random() > 0.9 ? '#ff0033' : '#ffffff'
         }));
 
-        let shootingStar = null;
-
-        function draw() {
+        function animate() {
             ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Yıldızlar
-            ctx.fillStyle = "#fff";
-            stars.forEach(s => {
-                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
-                s.y += s.speed; if(s.y > canvas.height) s.y = 0;
-            });
+            let grad = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, 250);
+            grad.addColorStop(0, 'rgba(20, 0, 5, 0.6)'); grad.addColorStop(1, 'transparent');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Kayan Yıldız Mantığı
-            if(!shootingStar && Math.random() < 0.01) {
-                shootingStar = { x: Math.random() * canvas.width, y: 0, length: 100 };
-            }
-            if(shootingStar) {
-                ctx.strokeStyle = "#fff"; ctx.lineWidth = 2;
-                ctx.beginPath(); ctx.moveTo(shootingStar.x, shootingStar.y);
-                ctx.lineTo(shootingStar.x + shootingStar.length, shootingStar.y + shootingStar.length);
-                ctx.stroke();
-                shootingStar.x += 10; shootingStar.y += 10;
-                if(shootingStar.x > canvas.width) shootingStar = null;
-            }
-            requestAnimationFrame(draw);
+            stars.forEach(s => {
+                ctx.fillStyle = s.color; ctx.globalAlpha = s.opacity;
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill();
+            });
+            ctx.globalAlpha = 1.0;
+            requestAnimationFrame(animate);
         }
-        draw();
+        animate();
     </script>
 </body>
 </html>
