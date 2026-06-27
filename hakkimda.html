@@ -7,6 +7,14 @@
     <title>Hakkımda │ Ahmet Can BİÇER</title>
     <link rel="stylesheet" href="css-style.css">
     <style>
+        body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+}
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #0b0b0b; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255,255,255,0.03); }

@@ -2,153 +2,46 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACB 3D Sarmal Motoru</title>
+    <title>Sinyal İşleme Motoru</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { width: 100%; height: 100%; overflow: hidden; background-color: #0b0b0b; }
-        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        body { margin: 0; background: #050505; overflow: hidden; }
+        canvas { display: block; }
     </style>
 </head>
 <body>
-
-    <div id="canvas-container"></div>
-
-    <!-- Güçlü Animasyon Kütüphaneleri -->
-    <script src="https://cloudflare.com"></script>
-    <script src="https://cloudflare.com"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x0b0b0b, 0.025); // Yoğun derinlik sisi
-
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 0, 32); // Sarmalı daha büyük görmek için kamera açısı yanaştırıldı
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.3;
-        container.appendChild(renderer.domElement);
+        document.body.appendChild(renderer.domElement);
 
-        const ambientLight = new THREE.AmbientLight(0x111111, 2);
-        scene.add(ambientLight);
+        const geometry = new THREE.BufferGeometry();
+        const material = new THREE.LineBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.6 });
+        const positions = new Float32Array(2000 * 3);
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const line = new THREE.Line(geometry, material);
+        scene.add(line);
 
-        const topLight = new THREE.DirectionalLight(0xffffff, 2.5);
-        topLight.position.set(5, 25, 15);
-        scene.add(topLight);
+        camera.position.z = 5;
+        let time = 0;
 
-        const backGlow = new THREE.PointLight(0xffffff, 3, 60);
-        backGlow.position.set(-15, 0, -10);
-        scene.add(backGlow);
-
-        // ASİL GÜMÜŞ/BEYAZ DETAYLI DNA SARMAL GRUBU
-        const dnaGroup = new THREE.Group();
-        const numNodes = 75; 
-        const radius = 5.5; // Tüm ekranı kaplaması için çap büyütüldü
-        const twistSpeed = 0.32; 
-        const phaseDifference = 2.2; 
-
-        const strandMat1 = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.95, roughness: 0.05 });
-        const strandMat2 = new THREE.MeshStandardMaterial({ color: 0x999999, metalness: 0.95, roughness: 0.05 });
-        const baseMat = new THREE.MeshStandardMaterial({ color: 0x333333, metalness: 0.6, roughness: 0.3 });
-
-        const pointsStrand1 = [];
-        const pointsStrand2 = [];
-
-        for (let i = 0; i < numNodes; i++) {
-            const y = (i * 0.7) - (numNodes * 0.35); 
-            const angle = i * twistSpeed;
-
-            const x1 = Math.sin(angle) * radius;
-            const z1 = Math.cos(angle) * radius;
-            pointsStrand1.push(new THREE.Vector3(x1, y, z1));
-
-            const x2 = Math.sin(angle + phaseDifference) * radius;
-            const z2 = Math.cos(angle + phaseDifference) * radius;
-            pointsStrand2.push(new THREE.Vector3(x2, y, z2));
-
-            if (i % 2 === 0) {
-                const p1 = new THREE.Vector3(x1, y, z1);
-                const p2 = new THREE.Vector3(x2, y, z2);
-                
-                const distance = p1.distanceTo(p2);
-                const cylinderGeom = new THREE.CylinderGeometry(0.1, 0.1, distance, 12);
-                
-                const connectionGroup = new THREE.Group();
-                const cylinder = new THREE.Mesh(cylinderGeom, baseMat);
-                cylinder.position.y = distance / 2;
-                cylinder.rotation.x = Math.PI / 2; 
-                connectionGroup.add(cylinder);
-                
-                connectionGroup.position.copy(p1);
-                connectionGroup.lookAt(p2);
-                dnaGroup.add(connectionGroup);
-
-                const atomGeom = new THREE.SphereGeometry(0.28, 16, 16);
-                const atom1 = new THREE.Mesh(atomGeom, strandMat1);
-                atom1.position.copy(p1);
-                const atom2 = new THREE.Mesh(atomGeom, strandMat2);
-                atom2.position.copy(p2);
-                dnaGroup.add(atom1, atom2);
-            }
-        }
-
-        const curve1 = new THREE.CatmullRomCurve3(pointsStrand1);
-        const tubeGeom1 = new THREE.TubeGeometry(curve1, 100, 0.18, 16, false);
-        const tube1 = new THREE.Mesh(tubeGeom1, strandMat1);
-
-        const curve2 = new THREE.CatmullRomCurve3(pointsStrand2);
-        const tubeGeom2 = new THREE.TubeGeometry(curve2, 100, 0.18, 16, false);
-        const tube2 = new THREE.Mesh(tubeGeom2, strandMat2);
-
-        dnaGroup.add(tube1, tube2);
-        scene.add(dnaGroup);
-
-        // FARE HAREKETLERİNİ YAKALAMA VE NORMALİZE ETME MOTORU
-        let mouseX = 0, mouseY = 0;
-        let targetX = 0, targetY = 0;
-
-        // Üst penceredeki (parent index.html) fare hareketlerini de dinliyoruz pürüzsüzlük için
-        window.parent.document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mousemove', handleMouseMove);
-
-        function handleMouseMove(event) {
-            mouseX = (event.clientX - window.innerWidth / 2) * 0.05;
-            mouseY = (event.clientY - window.innerHeight / 2) * 0.05;
-        }
-
-        // FARE TEKERLEĞİ (SCROLL) DÖNDÜKÇE SARMALI DERİNLEŞTİRME
-        window.parent.document.addEventListener('scroll', () => {
-            const scrollPercent = window.parent.scrollY * 0.01;
-            dnaGroup.position.z = scrollPercent;
-        });
-
-        // KUSURSUZ ANİMASYON DÖNGÜSÜ
         function animate() {
             requestAnimationFrame(animate);
-
-            // Fare hareketine yumuşak bir lag (easing) efekti katma
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
-
-            // Kendi ekseninde karizmatik dönüş
-            dnaGroup.rotation.y += 0.008;
-
-            // Fare hareket ettikçe siber sarmalın pürüzsüzce esnemesi / yön değiştirmesi
-            dnaGroup.rotation.x = targetY * 0.3;
-            dnaGroup.rotation.z = targetX * 0.3;
-
+            time += 0.05;
+            const positions = line.geometry.attributes.position.array;
+            for(let i = 0; i < 2000; i++) {
+                const x = (i - 1000) * 0.01;
+                const y = Math.sin(x * 5 + time) * 0.5 + (Math.random() - 0.5) * 0.2;
+                positions[i*3] = x;
+                positions[i*3+1] = y;
+                positions[i*3+2] = 0;
+            }
+            line.geometry.attributes.position.needsUpdate = true;
             renderer.render(scene, camera);
         }
         animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
     </script>
 </body>
 </html>
