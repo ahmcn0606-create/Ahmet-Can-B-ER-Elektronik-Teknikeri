@@ -9,20 +9,49 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 0, 51, 0.05) 1px, transparent 1px); background-size: 30px 30px; z-index: -1; pointer-events: none; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255, 0, 51, 0.03); }
-        .project-container { max-width: 1000px; margin: 0 auto; padding: 140px 20px 60px 20px; min-height: 100vh; }
-        .project-card { border: 1px solid #1a1a1a; padding: 20px; background: #0a0a0a; border-left: 3px solid #ff0033; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .project-container { max-width: 1000px; margin: 0 auto; padding: 140px 20px 60px 20px; min-height: 100vh; box-sizing: border-box; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; width: 100%; }
+        .project-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 20px; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 12px 20px !important; }
+            .project-container { padding-top: 130px !important; }
+            h1 { font-size: 26px !important; }
+            .projects-grid { display: flex !important; flex-direction: column !important; gap: 20px !important; width: 100% !important; }
+        }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <div class="navbar-brand"><img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px;"></div>
+        <div class="navbar-brand">
+            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 13px; font-weight: 700; color: #ffffff;">TR</span>
+            <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px;">
+        </div>
     </nav>
+
     <main class="project-container">
-        <a href="hakkimda.html" style="color: #ff0033;">&larr; Hakkımda'ya Dön</a>
-        <h1 style="margin: 20px 0;">Tüm Projelerim</h1>
-        <div class="project-card"><h3>TechForge Simulator</h3><p>Endüstriyel atölye simülasyonu.</p></div>
+        <div style="margin-bottom: 25px;">
+            <a href="hakkimda.html" style="color: #00e5ff; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">&larr; Hakkımda Sayfasına Dön</a>
+        </div>
+        
+        <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">Tüm Projelerim</h1>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3 style="color: #ffffff; margin-bottom: 10px; font-size: 18px;">Elektronik Devre Tasarımları</h3>
+                <p style="color: #aaaaaa; font-size: 14px; line-height: 1.6;">Proteus ve Altium Designer kullanılarak geliştirilen çok katmanlı PCB baskı devre tasarımları, şematik çizimler ve prototip üretim aşamaları.</p>
+            </div>
+            <div class="project-card">
+                <h3 style="color: #ffffff; margin-bottom: 10px; font-size: 18px;">Gömülü Sistem Uygulamaları</h3>
+                <p style="color: #aaaaaa; font-size: 14px; line-height: 1.6;">C++ ve Arduino mimarisi tabanlı mikrodenetleyici programlama projeleri, sensör entegrasyonları ve endüstriyel otomasyon sinyal işleme sistemleri.</p>
+            </div>
+        </div>
     </main>
+    <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); border-top: 1px solid rgba(255,255,255,0.02); width: 100%; box-sizing: border-box;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
 </body>
 </html>
