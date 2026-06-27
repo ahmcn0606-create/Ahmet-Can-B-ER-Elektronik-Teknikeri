@@ -38,14 +38,39 @@
         </ul>
     </nav>
 
-    <main style="max-width: 1200px; margin: 0 auto; padding: 140px 20px 80px 20px; display: grid; grid-template-columns: 350px 1fr; gap: 40px;">
-        <div class="left-col">
-            <div class="info-card">
-                <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 18px;">Deneyim</h2>
-                <div style="height: 400px; border-left: 2px solid #ff0033; margin-left: 10px; padding-left: 20px; color: #aaa;">Sarmal akış buraya işlenecek...</div>
-            <!-- Mevcut Deneyim kartındaki div'in içine bunu yapıştır -->
-<div style="position: relative;">
-    <!-- Deneyim 1 -->
+<main style="max-width: 1200px; margin: 0 auto; padding: 140px 20px 80px 20px; display: grid; grid-template-columns: 1fr 350px; gap: 40px;">
+    
+    <!-- SAĞ TARAF ARTIK SOLA GEÇTİ -->
+    <div class="right-col">
+        <div class="info-card" style="text-align: center;">
+            <img src="anasayfa_fotograf.jpeg" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+            <h1 style="margin-bottom: 5px; color: #fff;">Ahmet Can BİÇER</h1>
+            <p style="color: #ff0033; font-weight: 600; margin-bottom: 15px;">Elektronik Teknikeri</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button class="edu-btn"><span>🎓</span> Eğitimler</button>
+                <button class="edu-btn"><span>🏆</span> Sertifikalar</button>
+                <button class="edu-btn"><span>🔍</span> Detay</button>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 18px;">Program & Teknik Bilgisi</h2>
+                <div class="skill-item"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Eagle / Proteus <span>85%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
+                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">C++ / Arduino <span>75%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 75%; height: 100%;"></div></div></div>
+                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Bakım-Onarım <span>80%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 90%; height: 100%;"></div></div></div>
+                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">SolidWorks / Autocad <span>85%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
+                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">PLC / Kontrol Otomasyon <span>95%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
+                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Hidrolik / Pinomatik <span>75%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
+            </div>
+    </div>
+
+    <!-- SOL TARAF ARTIK SAĞA GEÇTİ -->
+    <div class="left-col">
+        <div class="info-card">
+            <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 18px;">Deneyim</h2>
+            <div style="border-left: 2px solid #ff0033; margin-left: 10px; padding-left: 20px;">
+               <!-- Deneyim 1 -->
     <div style="margin-bottom: 30px; position: relative;">
         <div style="position: absolute; left: -29px; top: 0; width: 15px; height: 15px; background: #ff0033; border-radius: 50%; box-shadow: 0 0 10px #ff0033;"></div>
         <h4 style="color: #fff; margin-bottom: 5px;">Şirket/Pozisyon Adı</h4>
@@ -60,36 +85,10 @@
         <span style="font-size: 11px; color: #ff0033;">2022 - 2024</span>
         <p style="font-size: 13px; color: #ccc; margin-top: 5px;">Buraya önceki iş deneyimini ekleyebilirsin.</p>
     </div>
-</div>
-            </div>
         </div>
+    </div>
 
-        <div class="right-col">
-            <div class="info-card" style="text-align: center;">
-                <img src="anasayfa_fotograf.jpeg" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
-                <h1 style="margin-bottom: 5px; color: #fff;">Ahmet Can BİÇER</h1>
-                <p style="color: #ff0033; font-weight: 600; margin-bottom: 15px;">Elektronik Teknikeri</p>
-                
-                <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-                    <button class="edu-btn"><span>🎓</span> Eğitimler</button>
-                    <button class="edu-btn"><span>🏆</span> Sertifikalar</button>
-                    <button class="edu-btn"><span>🔍</span> Detay</button>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h2 style="color: #ffffff; margin-bottom: 20px; font-size: 18px;">Program & Teknik Bilgisi</h2>
-                <div class="skill-item"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Eagle / Proteus <span>85%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">C++ / Arduino <span>75%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 75%; height: 100%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Bakım-Onarım <span>80%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 90%; height: 100%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">SolidWorks / Autocad <span>85%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">PLC / Kontrol Otomasyon <span>95%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
-                <div class="skill-item" style="margin-top:15px;"><div class="skill-info" style="color:#fff; font-size:12px; margin-bottom:5px;">Hidrolik / Pinomatik <span>75%</span></div><div class="skill-bar-bg" style="background:#222; height:6px; border-radius:10px; overflow:hidden;"><div class="skill-bar-fill" style="width: 85%; height: 100%;"></div></div></div>
-            </div>
-            </div>
-            </div>
-        </div>
-    </main>
+</main>
 
   
 </body>
