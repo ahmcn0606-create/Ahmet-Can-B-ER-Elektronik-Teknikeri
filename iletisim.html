@@ -2,42 +2,63 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>İletişim | Ahmet Can Biçer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="ACB MONOGRAM_SİYAH.png">
+    <title>İletişim │ Ahmet Can BİÇER</title>
     <style>
-        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; }
-        .navbar { display: flex; justify-content: space-between; padding: 20px 50px; align-items: center; border-bottom: 1px solid #333; }
-        .logo a { color: #fff; text-decoration: none; font-weight: bold; }
-        .nav-right { display: flex; gap: 15px; align-items: center; }
-        .content { text-align: center; margin-top: 100px; }
-        .contact-box { background: #111; padding: 40px; border: 1px solid #ff0033; display: inline-block; border-radius: 10px; }
-        input, textarea { width: 300px; display: block; margin: 10px auto; padding: 10px; }
-        .social-links { margin-top: 20px; }
-        footer { margin-top: 50px; color: #555; font-size: 12px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; }
+        
+        /* Navbar ve Çizgi */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid transparent; border-image: linear-gradient(to right, #ff0033, #000); border-image-slice: 1; }
+        
+        .contact-container { max-width: 1000px; margin: 0 auto; padding: 140px 20px 60px 20px; }
+        .grid-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        
+        /* Kutucuklar */
+        .box { border: 1px solid #222; padding: 30px; border-radius: 8px; background: rgba(255,255,255,0.01); }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 12px; margin-bottom: 8px; color: #888; text-transform: uppercase; }
+        .form-input { width: 100%; padding: 10px; background: #0a0a0a; border: 1px solid #333; border-radius: 4px; color: white; }
+        
+        .btn-submit { width: 100%; padding: 12px; background: #ff0033; color: white; border: none; cursor: pointer; font-weight: bold; }
+        
+        /* Sağ Kutu Linkler */
+        .link-item { display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid #222; margin-bottom: 15px; border-radius: 6px; transition: 0.3s; color: white; text-decoration: none; }
+        .link-item:hover { border-color: #ff0033; }
+        
+        footer { padding: 40px; text-align: center; color: #555; font-size: 12px; }
+
+        @media (max-width: 768px) { .grid-wrapper { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo"><a href="index.html">← Ana Sayfaya Dön</a></div>
-        <div class="nav-right">
-            <span>TR 🇹🇷</span>
-        </div>
+        <div class="navbar-brand"><img src="ACB MONOGRAM_BEYAZ.png" alt="Logo" style="width: 35px;"></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span>TR</span> <img src="turk-bayraki.png" style="width: 20px;"></div>
     </nav>
 
-    <main class="content">
-        <div class="contact-box">
-            <h1>Benimle İletişime Geçin</h1>
-            <form action="mailto:seninemail@adresin.com" method="post">
-                <input type="text" placeholder="Adınız" required>
-                <input type="email" placeholder="E-posta Adresiniz" required>
-                <textarea placeholder="Mesajınız" rows="5"></textarea>
-                <button type="submit" style="background:#ff0033; color:#fff; border:none; padding:10px 20px; cursor:pointer;">Gönder</button>
-            </form>
+    <main class="contact-container">
+        <a href="index.html" style="color: #ff0033; text-decoration: none;">&larr; Ana Sayfaya Dön</a>
+        <h1 style="margin: 20px 0;">İletişim</h1>
+        
+        <div class="grid-wrapper">
+            <div class="box">
+                <form>
+                    <div class="form-group"><label class="form-label">Adınız</label><input type="text" class="form-input"></div>
+                    <div class="form-group"><label class="form-label">E-Posta</label><input type="email" class="form-input"></div>
+                    <div class="form-group"><label class="form-label">Mesaj</label><textarea rows="4" class="form-input"></textarea></div>
+                    <button type="submit" class="btn-submit">GÖNDER</button>
+                </form>
+            </div>
 
-            <div class="social-links">
-                <a href="https://instagram.com/kullaniciadi">Instagram</a> | 
-                <a href="https://linkedin.com/in/kullaniciadi">LinkedIn</a> | 
-                <a href="https://bionluk.com/kullaniciadi">Bionluk</a>
+            <div class="box">
+                <a href="#" class="link-item"><span>📷</span> Instagram</a>
+                <a href="#" class="link-item"><span>💼</span> LinkedIn</a>
+                <a href="#" class="link-item"><span>📦</span> Bionluk</a>
+                <a href="#" class="link-item"><span>💬</span> WhatsApp</a>
             </div>
         </div>
     </main>
