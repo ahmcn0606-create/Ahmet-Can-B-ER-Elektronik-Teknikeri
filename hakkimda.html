@@ -10,76 +10,68 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
         
-        /* Izgara Efekti */
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 0, 51, 0.05) 1px, transparent 1px); background-size: 30px 30px; z-index: -1; pointer-events: none; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 0, 51, 0.1) 1px, transparent 1px); background-size: 60px 60px; z-index: -1; pointer-events: none; }
 
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.85); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255, 0, 51, 0.1); }
-        .navbar-brand { display: flex; align-items: center; padding-right: 20px; border-right: 1px solid rgba(255, 0, 51, 0.1); height: 40px; }
-        .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0; }
-        .nav-links a { color: #888888; text-decoration: none; font-size: 14px; font-weight: 500; }
-        .about-container { max-width: 800px; margin: 0 auto; padding: 140px 20px 60px 20px; min-height: 100vh; box-sizing: border-box; }
-        .skills-section { margin: 40px 0; background: rgba(11, 11, 11, 0.5); border: 1px solid rgba(255, 0, 51, 0.1); padding: 30px; border-radius: 6px; }
-        .skill-item { margin-bottom: 20px; }
-        .skill-info { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #aaaaaa; text-transform: uppercase; margin-bottom: 8px; }
-        .skill-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
-        .skill-bar-fill { height: 100%; background: #ff0033; border-radius: 10px; }
-        .card-grid { display: flex; flex-direction: column; gap: 25px; width: 100%; }
-        .info-card { background: rgba(11, 11, 11, 0.5); border: 1px solid rgba(255, 0, 51, 0.1); border-radius: 6px; padding: 25px; }
-
-        @media (max-width: 768px) {
-            .navbar { padding: 12px 20px !important; flex-direction: column !important; gap: 12px !important; }
-            .navbar-brand { border-right: none !important; height: auto !important; }
-            .nav-links { gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
-            .about-container { padding-top: 170px !important; }
-            h1 { font-size: 26px !important; }
-            .info-card { padding: 15px !important; }
-        }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.9); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255, 0, 51, 0.1); }
+        .about-container { max-width: 1200px; margin: 0 auto; padding: 140px 20px 60px 20px; display: grid; grid-template-columns: 350px 1fr; gap: 40px; }
+        
+        .left-col { display: flex; flex-direction: column; gap: 20px; }
+        .right-col { display: flex; flex-direction: column; gap: 40px; }
+        
+        .info-card { background: rgba(11, 11, 11, 0.6); border: 1px solid rgba(255, 0, 51, 0.2); padding: 25px; border-radius: 8px; }
+        
+        /* Modal Balon Yapısı */
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #111; border: 1px solid #ff0033; padding: 30px; z-index: 1000; border-radius: 8px; max-width: 500px; width: 90%; }
+        
+        @media (max-width: 768px) { .about-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <div class="navbar-brand">
-            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" style="color: #ffffff; font-weight: 600;">Hakkımda</a></li>
-            <li><a href="projelerim.html" style="color: #888888;">Projelerim</a></li>
-            <li><a href="cv.pdf" target="_blank" style="color: #ffffff; border: 1px solid #ff0033; padding: 6px 16px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">CV</a></li>
-            <li style="display: flex; align-items: center; gap: 8px; padding-left: 15px; border-left: 1px solid rgba(255, 0, 51, 0.2);">
-                <span style="font-size: 13px; font-weight: 700; color: #ffffff;">TR</span>
-                <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 24px; height: auto; display: block; border-radius: 2px;">
-            </li>
+        <div class="navbar-brand"><img src="ACB MONOGRAM_BEYAZ.png" style="width: 38px;"></div>
+        <ul class="nav-links" style="display: flex; gap: 20px; list-style: none;">
+            <li><a href="index.html" style="color: #ccc; text-decoration: none;">Ana Sayfa</a></li>
+            <li><a href="#" style="color: #ff0033; font-weight: 700; text-decoration: none;">Hakkımda</a></li>
         </ul>
     </nav>
+
     <main class="about-container">
-        <div style="margin-bottom: 25px;">
-            <a href="index.html" style="color: #ff0033; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">&larr; Ana Sayfaya Dön</a>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 40px;">
-            <img src="anasayfa_fotograf.jpeg" alt="Ahmet Can Biçer" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #ff0033; box-shadow: 0 0 20px rgba(255, 0, 51, 0.2); margin-bottom: 20px;">
-            <h2 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 5px;">Ahmet Can BİÇER</h2>
-            <div style="font-size: 14px; color: #ff0033; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Elektronik Teknikeri</div>
-        </div>
-        <h1 style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 20px; border-bottom: 2px solid #ff0033; display: inline-block; padding-bottom: 5px;">Kariyer Özeti</h1>
-        <p style="font-size: 15px; line-height: 1.8; color: #cccccc; margin-bottom: 35px; text-align: justify;">
-            Elektronik devre tasarımı, donanımsal arıza bakım-onarım ve gömülü sistem mimarileri alanında uzmanlaşmış dinamik bir Elektronik Teknikeriyim. Savunma sanayii odaklı teknolojik altyapılara duyduğum yüksek ilgiyle; Altium Designer ve Proteus üzerinde çok katmanlı PCB tasarımları gerçekleştiriyor, osiloskop ve ileri ölçüm cihazlarıyla kompleks kartlar üzerinde sinyal/arıza takibi yürütüyorum. Teknik disiplini, teorik analiz gücü ve pratik üretim refleksleriyle birleştirerek AR-GE ve üretim süreçlerine çok yönlü katkı sağlamayı amaçlıyorum.
-        </p>
-        <div class="skills-section">
-            <h2 style="font-size: 16px; font-weight: 800; color: #ff0033; margin-bottom: 25px; letter-spacing: 1px; text-transform: uppercase;">Program & Teknik Bilgi</h2>
-            <div class="skill-item"><div class="skill-info"><span>Altium Designer / Proteus</span><span>%85</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div></div>
-            <div class="skill-item"><div class="skill-info"><span>C++ / Arduino</span><span>%75</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div></div>
-            <div class="skill-item"><div class="skill-info"><span>Arıza Bakım-Onarım</span><span>%90</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div></div>
-            <div class="skill-item"><div class="skill-info"><span>SolidWorks</span><span>%50</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 50%;"></div></div></div>
-        </div>
-        <h1 style="font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 25px; border-bottom: 2px solid #ff0033; display: inline-block; padding-bottom: 5px;">Deneyim & Eğitim</h1>
-        <div class="card-grid">
+        <!-- SOL SÜTUN: Teknik Bilgi ve Eğitim -->
+        <div class="left-col">
             <div class="info-card">
-                <h3 style="font-size: 17px; font-weight: 700; color: #ffffff; margin-bottom: 5px;">Elektronik Teknikeri</h3>
-                <div style="font-size: 13px; color: #ff0033; font-weight: 600; margin-bottom: 12px; text-transform: uppercase;">ACB Teknoloji & Savunma Sanayii</div>
-                <p style="font-size: 14px; color: #aaaaaa; line-height: 1.6;">Gömülü sistemler, mikrodenetleyici programlama ve baskı devre kartı (PCB) tasarım süreçlerinin yürütülmesi. Elektronik sistemler üzerinde arıza analizi ve donanımsal iyileştirmelerin yapılması.</p>
+                <h2 style="color: #ff0033; margin-bottom: 15px;">Teknik Bilgi</h2>
+                <div style="font-size: 14px; color: #aaa;">Altium, Proteus, C++, SolidWorks...</div>
+            </div>
+            
+            <div class="info-card">
+                <h2 style="color: #ff0033; margin-bottom: 15px;">Eğitim & Sertifikalar</h2>
+                <button onclick="document.getElementById('eduModal').style.display='block'" style="background: transparent; border: 1px solid #ff0033; color: #fff; padding: 10px; width: 100%; cursor: pointer;">Detayları Görüntüle</button>
+            </div>
+        </div>
+
+        <!-- SAĞ SÜTUN: Profil ve Deneyim -->
+        <div class="right-col">
+            <div class="info-card" style="text-align: center;">
+                <img src="anasayfa_fotograf.jpeg" style="width: 120px; border-radius: 50%; border: 2px solid #ff0033; margin-bottom: 15px;">
+                <h1 style="margin-bottom: 5px;">Ahmet Can BİÇER</h1>
+                <p style="color: #ff0033; font-weight: 600;">Elektronik Teknikeri</p>
+                <p style="margin-top: 15px; color: #ccc;">Kariyer özeti burada yer alacak...</p>
+            </div>
+
+            <div class="info-card">
+                <h2 style="color: #ff0033; margin-bottom: 20px;">Deneyim (Sarmal Akış)</h2>
+                <!-- Deneyim timeline buraya gelecek -->
             </div>
         </div>
     </main>
-    <footer style="padding: 25px; text-align: center; color: #555; font-size: 12px; background: rgba(10, 10, 10, 0.5); border-top: 1px solid rgba(255, 0, 51, 0.1); width: 100%;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
+
+    <!-- Modal -->
+    <div id="eduModal" class="modal">
+        <h3 style="color: #ff0033;">Eğitim Detayları</h3>
+        <p style="margin: 15px 0; color: #ccc;">Buraya sertifikalar eklenecek.</p>
+        <button onclick="document.getElementById('eduModal').style.display='none'" style="background: #ff0033; border: none; padding: 5px 15px; color: #fff;">Kapat</button>
+    </div>
+
 </body>
 </html>
