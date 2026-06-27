@@ -10,12 +10,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { width: 100%; height: 100%; background-color: #0b0b0b; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
         
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(15, 15, 15, 0.6); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
-        .navbar-brand { display: flex; align-items: center; padding-right: 15px; border-right: 1px solid rgba(255, 255, 255, 0.1); height: 35px; }
+        /* Kırmızı Grid Efekti */
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 0, 51, 0.05) 1px, transparent 1px); background-size: 30px 30px; z-index: -1; pointer-events: none; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(15, 15, 15, 0.6); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 999; border-bottom: 1px solid rgba(255, 0, 51, 0.1); }
+        .navbar-brand { display: flex; align-items: center; padding-right: 15px; border-right: 1px solid rgba(255, 0, 51, 0.1); height: 35px; }
         .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
         .nav-links a { color: #a0a0a0; text-decoration: none; font-size: 14px; font-weight: 500; }
         
-        /* SARMAL ANİMASYONUN TÜM EKRANI KAPLAYACAĞI SABİT ALAN */
         #sarmal-frame { 
             position: fixed;
             top: 0;
@@ -24,21 +26,20 @@
             height: 100%;
             border: none;
             background: transparent;
-            z-index: 1; /* En arkada */
-            pointer-events: auto; /* Fare hareketlerini algılaması için şart */
+            z-index: 1; 
+            pointer-events: auto; 
         }
         
-        /* İsminin 3D sarmalın üzerinde cam gibi parlaması için üst katman */
         .content-layer {
             position: relative;
-            z-index: 2; /* Yazıyı öne çıkarır */
+            z-index: 2; 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             text-align: center;
-            pointer-events: none; /* Fare akışının arkadaki 3D sahneye geçmesini sağlar */
+            pointer-events: none; 
         }
         
         .main-title { 
@@ -46,7 +47,7 @@
             font-weight: 800; 
             color: #ffffff; 
             letter-spacing: 3px; 
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 15px rgba(255, 0, 51, 0.6);
         }
 
         @media (max-width: 768px) {
@@ -60,11 +61,10 @@
 </head>
 <body>
 
-    <!-- 3 SANİYELİK PARLAYAN AÇILIŞ LOGO INTROSU -->
     <div class="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0b0b0b; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.6s ease;">
         <div style="position: relative; width: 140px; height: 140px; display: flex; justify-content: center; align-items: center;">
-            <div style="position: absolute; width: 100%; height: 100%; border: 3px solid rgba(255, 255, 255, 0.05); border-top: 3px solid #ffffff; border-radius: 50%; animation: spinRing 2s linear infinite;"></div>
-            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Monogram" style="width: 85px; height: auto; filter: drop-shadow(0 0 15px rgba(255,255,255,0.3)); animation: pulseGlow 2s ease-in-out infinite;">
+            <div style="position: absolute; width: 100%; height: 100%; border: 3px solid rgba(255, 0, 51, 0.05); border-top: 3px solid #ff0033; border-radius: 50%; animation: spinRing 2s linear infinite;"></div>
+            <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Monogram" style="width: 85px; height: auto; filter: drop-shadow(0 0 15px rgba(255,0,51,0.3)); animation: pulseGlow 2s ease-in-out infinite;">
         </div>
     </div>
 
@@ -73,10 +73,8 @@
         @keyframes pulseGlow { 0% { transform: scale(0.95); opacity: 0.6; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.6; } }
     </style>
 
-    <!-- TÜM ARKA PLANI KAPLAYAN BAĞIMSIZ 3D IFRAME PENCERESİ -->
-   <iframe id="sarmal-frame" src="animasyon.html" scrolling="no" style="position: fixed; top:0; left:0; width:100%; height:100%; border:none; z-index:0;"></iframe>
+    <iframe id="sarmal-frame" src="animasyon.html" scrolling="no"></iframe>
 
-    <!-- ÜST KATMAN (MENÜ VE İSMİN BURADA DURACAK) -->
     <div class="content-layer">
         <nav class="navbar" style="pointer-events: auto;">
             <div class="navbar-brand">
@@ -86,7 +84,7 @@
                 <li><a href="index.html">Ana Sayfa</a></li>
                 <li><a href="hakkimda.html">Hakkımda</a></li>
                 <li><a href="iletisim.html">İletişim</a></li>
-                <li style="display: flex; align-items: center; gap: 6px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.1);">
+                <li style="display: flex; align-items: center; gap: 6px; padding-left: 10px; border-left: 1px solid rgba(255, 0, 51, 0.1);">
                     <span style="font-size: 12px; font-weight: 700; color: #ffffff;">TR</span>
                     <img src="turk-bayraki.png" alt="Türk Bayrağı" style="width: 22px; height: auto; display: block; border-radius: 2px;">
                 </li>
@@ -98,9 +96,8 @@
         </main>
     </div>
 
-    <footer style="position: fixed; bottom: 0; left: 0; padding: 25px; text-align: center; color: #444; font-size: 12px; width: 100%; border-top: 1px solid rgba(255,255,255,0.01); z-index: 10; background: transparent; pointer-events: none;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
+    <footer style="position: fixed; bottom: 0; left: 0; padding: 25px; text-align: center; color: #444; font-size: 12px; width: 100%; border-top: 1px solid rgba(255, 0, 51, 0.01); z-index: 10; background: transparent; pointer-events: none;">&copy; 2026 Ahmet Can Biçer. Tüm Hakları Saklıdır.</footer>
 
-    <!-- F5 KONTROLLÜ HAFIZA MOTORU -->
     <script>
         const preloader = document.querySelector('.preloader');
         const isPageRefreshed = performance.getEntriesByType("navigation")[0]?.type === "reload";

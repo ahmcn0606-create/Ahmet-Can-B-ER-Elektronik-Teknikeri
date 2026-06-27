@@ -7,17 +7,12 @@
     <title>İletişim │ Ahmet Can BİÇER</title>
     <link rel="stylesheet" href="css-style.css">
     <style>
-        body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
-    z-index: -1;
-    pointer-events: none;
-}
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
+        
+        /* Izgara Efekti */
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 0, 51, 0.05) 1px, transparent 1px); background-size: 30px 30px; z-index: -1; pointer-events: none; }
+
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .contact-container { max-width: 600px; margin: 0 auto; padding: 140px 20px 60px 20px; min-height: 100vh; box-sizing: border-box; }
         .form-group { margin-bottom: 20px; }
@@ -35,11 +30,6 @@
 <body>
 
     <nav class="navbar">
-        <div style="padding: 90px 20px 0 20px; max-width: 1000px; margin: 0 auto; width: 100%;">
-    <a href="index.html" style="color: #00e5ff; text-decoration: none; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; letter-spacing: 1px; text-transform: uppercase;">
-        &larr; Ana Sayfaya Dön
-    </a>
-</div>
         <div class="navbar-brand">
             <img src="ACB MONOGRAM_BEYAZ.png" alt="ACB Logo" style="width: 38px; height: auto; display: block;">
         </div>
@@ -50,9 +40,8 @@
     </nav>
 
     <main class="contact-container">
-        <!-- MAWİ LİNK ENTEGRESİ -->
         <div style="margin-bottom: 25px;">
-            <a href="index.html" style="color: #00e5ff; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">&larr; Ana Sayfaya Dön</a>
+            <a href="index.html" style="color: #ff0033; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">&larr; Ana Sayfaya Dön</a>
         </div>
         
         <h1 style="font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 30px; border-bottom: 2px solid #ffffff; display: inline-block; padding-bottom: 5px;">İletişim</h1>
