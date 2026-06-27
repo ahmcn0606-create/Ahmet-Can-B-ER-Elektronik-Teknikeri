@@ -10,9 +10,8 @@
         body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden; }
         
        /* Navbar ve Çizgi */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.6); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 998; border-bottom: 1px solid transparent; border-image: linear-gradient(to right, #ff0033, #000); border-image-slice: 1; }
-
-        .grid-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: rgba(11, 11, 11, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 999; }
+        .navbar::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(to left, #ff0033, transparent); }
         
         /* Proje Kartları (Hakkımda ile uyumlu çerçeve) */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
